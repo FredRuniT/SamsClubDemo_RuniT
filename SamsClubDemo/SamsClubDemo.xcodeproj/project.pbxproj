@@ -14,6 +14,11 @@
 		F6727F7A235EA9E1005B4A2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F78235EA9E1005B4A2C /* LaunchScreen.storyboard */; };
 		F6727F85235EA9E1005B4A2C /* SamsClubDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F84235EA9E1005B4A2C /* SamsClubDemoTests.swift */; };
 		F6727F90235EA9E2005B4A2C /* SamsClubDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F8F235EA9E2005B4A2C /* SamsClubDemoUITests.swift */; };
+		F6727FA4235EAF31005B4A2C /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */; };
+		F6727FA6235EBABE005B4A2C /* ProductListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FA5235EBABE005B4A2C /* ProductListCollectionViewController.swift */; };
+		F6727FA8235EBB17005B4A2C /* SavedItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */; };
+		F6727FAC235EC2CA005B4A2C /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */; };
+		F6727FAE235EC412005B4A2C /* SavedItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FAD235EC412005B4A2C /* SavedItemsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		F6727F8B235EA9E2005B4A2C /* SamsClubDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamsClubDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6727F8F235EA9E2005B4A2C /* SamsClubDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamsClubDemoUITests.swift; sourceTree = "<group>"; };
 		F6727F91235EA9E2005B4A2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		F6727FA5235EBABE005B4A2C /* ProductListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCollectionViewController.swift; sourceTree = "<group>"; };
+		F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemsCollectionViewController.swift; sourceTree = "<group>"; };
+		F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
+		F6727FAD235EC412005B4A2C /* SavedItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +110,7 @@
 				F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */,
 				F6727F78235EA9E1005B4A2C /* LaunchScreen.storyboard */,
 				F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */,
+				F6727F7B235EA9E1005B4A2C /* Info.plist */,
 				F6727F9F235EAE24005B4A2C /* Models */,
 				F6727FA1235EAE47005B4A2C /* Views */,
 				F6727FA0235EAE3B005B4A2C /* ViewModels */,
@@ -131,6 +142,9 @@
 		F6727F9D235EAE0D005B4A2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */,
+				F6727FA5235EBABE005B4A2C /* ProductListCollectionViewController.swift */,
+				F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
+				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
+				F6727FAD235EC412005B4A2C /* SavedItemsCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,7 +183,6 @@
 		F6727FA2235EAE5A005B4A2C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F6727F7B235EA9E1005B4A2C /* Info.plist */,
 				F6727F76235EA9E1005B4A2C /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -304,8 +319,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6727FA6235EBABE005B4A2C /* ProductListCollectionViewController.swift in Sources */,
+				F6727FA8235EBB17005B4A2C /* SavedItemsCollectionViewController.swift in Sources */,
 				F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */,
 				F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */,
+				F6727FA4235EAF31005B4A2C /* BaseTabBarController.swift in Sources */,
+				F6727FAE235EC412005B4A2C /* SavedItemsCollectionViewCell.swift in Sources */,
+				F6727FAC235EC2CA005B4A2C /* ProductListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
