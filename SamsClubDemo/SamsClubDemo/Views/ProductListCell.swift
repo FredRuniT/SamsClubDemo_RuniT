@@ -23,13 +23,12 @@ class ProductListCell: UICollectionViewCell {
     let productNameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        nameLabel.text = "Samsung 50 Inch TV"
+        nameLabel.numberOfLines = 2
         return nameLabel
     }()
     
     let productPriceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = ""
         priceLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         priceLabel.textColor = .darkGray
         priceLabel.adjustsFontForContentSizeCategory = true
@@ -38,14 +37,12 @@ class ProductListCell: UICollectionViewCell {
     
     let productInstockLabel: UILabel = {
         let instockLabel = UILabel()
-        instockLabel.text = ""
         instockLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         return instockLabel
     }()
     
     let productRatingLabel: UILabel = {
         let productRatingLabel = UILabel()
-        productRatingLabel.text = ""
         productRatingLabel.adjustsFontForContentSizeCategory = true
         return productRatingLabel
     }()
