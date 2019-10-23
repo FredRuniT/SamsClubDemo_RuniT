@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Sofia-Pro-Black.otf</string>
-		<string>Sofia-Pro-Bold.otf</string>
-		<string>Sofia-Pro-Light-Italic.otf</string>
-		<string>Sofia-Pro-Light.otf</string>
-		<string>Sofia-Pro-Medium.otf</string>
-		<string>Sofia-Pro-Regular.otf</string>
-		<string>Sofia-Pro-Bold-Italic.otf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
