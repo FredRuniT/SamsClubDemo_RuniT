@@ -42,7 +42,7 @@ class ProductListCell: UICollectionViewCell {
     
     let productInstockLabel: UILabel = {
         let instockLabel = UILabel()
-        instockLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
+        instockLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         instockLabel.adjustsFontSizeToFitWidth = true
         instockLabel.adjustsFontForContentSizeCategory = true
         instockLabel.adjustsFontForContentSizeCategory = true

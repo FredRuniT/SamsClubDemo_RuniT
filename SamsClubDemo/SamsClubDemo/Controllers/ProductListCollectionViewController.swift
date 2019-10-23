@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 private let reuseIdentifier = "productlistcell"
 
@@ -54,14 +55,18 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
         
+        //TODO: Move to View Model
         let productResult = productResults[indexPath.row]
         cell.productNameLabel.text = productResult.productName
         cell.productPriceLabel.text = productResult.price
         cell.productRatingLabel.text = String(productResult.reviewCount)
+        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+        let imageUrl = URL(string: baseUrl + productResult.productImage)
+        cell.productImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "loadingPlaceHolderImageSmall"), options: .avoidAutoSetImage, completed: nil)
+        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
         
         if productResult.inStock {
             cell.productInstockLabel.text = "In Stock"
-            cell.productInstockLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         } else {
             cell.productInstockLabel.text = "Out of Stock"
             cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
