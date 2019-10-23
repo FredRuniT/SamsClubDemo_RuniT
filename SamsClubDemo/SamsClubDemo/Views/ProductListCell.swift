@@ -11,49 +11,33 @@ import UIKit
 
 class ProductListCell: UICollectionViewCell {
     
-    lazy var productImageView: UIImageView = {
-        var imageView = UIImageView()
-        imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        imageView.layer.cornerRadius = 10
-        imageView.backgroundColor = .blue
-        return imageView
+    
+    lazy var productImageView = UIImageView(cornerRadius: 0)
+    
+    lazy var productNameLabel = UILabel(text: "Product Name", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
+    
+    lazy var productPriceLabel = UILabel(text: "$500", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .gray)
+    
+    lazy var productInstockLabel = UILabel(text: "In Stock", font: .preferredFont(forTextStyle: .caption1))
+    
+    lazy var productRatingLabel = UILabel(text: "Rating", font: .preferredFont(forTextStyle: .caption1))
+    
+    lazy var starRatingStackView: UIStackView = {
+        
+        var arrangedSubviews = [UIView]()
+        (0..<5).forEach({ (_) in
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "star"))
+            imageView.constrainWidth(constant: 24)
+            imageView.constrainHeight(constant: 24)
+            arrangedSubviews.append(imageView)
+        })
+        arrangedSubviews.append(UIView())
+        
+        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
+        return stackView
     }()
     
-     lazy var productNameLabel: UILabel = {
-        let nameLabel = UILabel()
-        nameLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        nameLabel.adjustsFontSizeToFitWidth = true
-        nameLabel.adjustsFontForContentSizeCategory = true
-        nameLabel.numberOfLines = 2
-        return nameLabel
-    }()
-    
-     lazy var productPriceLabel: UILabel = {
-        let priceLabel = UILabel()
-        priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        priceLabel.textColor = .darkGray
-        priceLabel.adjustsFontSizeToFitWidth = true
-        priceLabel.adjustsFontForContentSizeCategory = true
-        return priceLabel
-    }()
-    
-      var productInstockLabel: UILabel = {
-        let instockLabel = UILabel()
-        instockLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        instockLabel.adjustsFontSizeToFitWidth = true
-        instockLabel.adjustsFontForContentSizeCategory = true
-        return instockLabel
-    }()
-    
-     lazy var productRatingLabel: UILabel = {
-        let productRatingLabel = UILabel()
-        productRatingLabel.adjustsFontForContentSizeCategory = true
-        productRatingLabel.adjustsFontSizeToFitWidth = true
-        return productRatingLabel
-    }()
-    
-     lazy var viewProductButton: UIButton = {
+    lazy var viewProductButton: UIButton = {
         let viewProductButton = UIButton(type: .system)
         viewProductButton.setTitle("VIEW", for: .normal)
         viewProductButton.setTitleColor(.blue, for: .normal)
@@ -68,10 +52,9 @@ class ProductListCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, productRatingLabel,productPriceLabel, productInstockLabel])
+        let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, starRatingStackView,productPriceLabel, productInstockLabel])
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 5
-        labelsStackView.distribution = .fillProportionally
         
         let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView])
         productStackView.spacing = 10

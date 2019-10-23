@@ -67,7 +67,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         
         cell.productNameLabel.text = productResult.productName
         cell.productPriceLabel.text = productResult.price
-        cell.productRatingLabel.text = String(productResult.reviewCount)
         cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
         
         if productResult.inStock {
@@ -77,32 +76,41 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
             cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
         }
         
+        for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
+            if productResult.reviewCount == 0 {
+                cell.starRatingStackView.isHidden = true
+            }
+            view.alpha = index >= productResult.reviewCount ? 0 : 1
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-          //TODO: REFactor Out
+        //TODO: REFactor Out
         let productResult = productResults[indexPath.row]
-        let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 500))
+        let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 150))
         
         let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
-            let imageUrl = URL(string: baseUrl + productResult.productImage)
-            
-            cell.productNameLabel.text = productResult.productName
-            cell.productPriceLabel.text = productResult.price
-            cell.productRatingLabel.text = String(productResult.reviewCount)
-            cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
-            
-            if productResult.inStock {
-                cell.productInstockLabel.text = "In Stock"
-            } else {
-                cell.productInstockLabel.text = "Out of Stock"
-                cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
-            }
-           cell.layoutIfNeeded()
-        let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 500))
-     
+        let imageUrl = URL(string: baseUrl + productResult.productImage)
+        
+        cell.productNameLabel.text = productResult.productName
+        cell.productPriceLabel.text = productResult.price
+        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        
+        if productResult.inStock {
+            cell.productInstockLabel.text = "In Stock"
+        } else {
+            cell.productInstockLabel.text = "Out of Stock"
+            cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
+        }
+        for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
+            view.alpha = index >= productResult.reviewCount ? 0 : 1
+        }
+        cell.layoutIfNeeded()
+        let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
+        
         return .init(width: view.frame.width, height: estimatedSize.height)
     }
 }
