@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		F6727FE9235FFE64005B4A2C /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FE6235FFE64005B4A2C /* CustomFonts.swift */; };
 		F6727FEA235FFE64005B4A2C /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FE7235FFE64005B4A2C /* UIView+Layout.swift */; };
 		F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FE8235FFE64005B4A2C /* VerticalStackView.swift */; };
+		F6727FED23601A5C005B4A2C /* ProductDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FEC23601A5C005B4A2C /* ProductDetailsCollectionViewController.swift */; };
+		F6727FEF23601B27005B4A2C /* ProductDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FEE23601B27005B4A2C /* ProductDetailsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		F6727FE6235FFE64005B4A2C /* CustomFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		F6727FE7235FFE64005B4A2C /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		F6727FE8235FFE64005B4A2C /* VerticalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		F6727FEC23601A5C005B4A2C /* ProductDetailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsCollectionViewController.swift; sourceTree = "<group>"; };
+		F6727FEE23601B27005B4A2C /* ProductDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +109,6 @@
 				45C02BF3D0CE01F7EA3F3082 /* Pods-SamsClubDemo.debug.xcconfig */,
 				D170FE63846EC2FD8EAAE63E /* Pods-SamsClubDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -172,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				F6727FA5235EBABE005B4A2C /* ProductListCollectionViewController.swift */,
+				F6727FEC23601A5C005B4A2C /* ProductDetailsCollectionViewController.swift */,
 				F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */,
 				F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */,
 			);
@@ -205,6 +209,7 @@
 			children = (
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
 				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
+				F6727FEE23601B27005B4A2C /* ProductDetailsCell.swift */,
 				F6727FAD235EC412005B4A2C /* SavedItemsCollectionViewCell.swift */,
 			);
 			path = Views;
@@ -421,6 +426,7 @@
 			files = (
 				F6727FA6235EBABE005B4A2C /* ProductListCollectionViewController.swift in Sources */,
 				F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */,
+				F6727FED23601A5C005B4A2C /* ProductDetailsCollectionViewController.swift in Sources */,
 				F6727FA8235EBB17005B4A2C /* SavedItemsCollectionViewController.swift in Sources */,
 				F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */,
 				F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */,
@@ -428,6 +434,7 @@
 				F6727FE4235FFE40005B4A2C /* ServiceManager.swift in Sources */,
 				F6727FEA235FFE64005B4A2C /* UIView+Layout.swift in Sources */,
 				F6727FDE235FFDDA005B4A2C /* Products.swift in Sources */,
+				F6727FEF23601B27005B4A2C /* ProductDetailsCell.swift in Sources */,
 				F6727FE9235FFE64005B4A2C /* CustomFonts.swift in Sources */,
 				F6727FAE235EC412005B4A2C /* SavedItemsCollectionViewCell.swift in Sources */,
 				F6727FAC235EC2CA005B4A2C /* ProductListCell.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 class ProductDetailsCell: UICollectionViewCell {
     
+    let productListCollectionViewController = ProductListCollectionViewController()
     
     lazy var productBrandLabel: UILabel = {
         let productBrandLabel = UILabel()
@@ -54,8 +55,6 @@ class ProductDetailsCell: UICollectionViewCell {
     
     lazy var productImageView: UIImageView = {
         var imageView = UIImageView()
-        imageView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 2000).isActive = true
         imageView.layer.cornerRadius = 10
         return imageView
     }()
@@ -114,11 +113,11 @@ class ProductDetailsCell: UICollectionViewCell {
         ratingsStackView.spacing = 10
         ratingsStackView.axis = .horizontal
         
-        let centerStackView = UIStackView(arrangedSubviews: [productImageView, productShortDescriptionLabel, productSizeDecriptionLabel, productSizeLabel, productPriceLabel, productLongDescriptionLabel])
+        let centerStackView = UIStackView(arrangedSubviews: [productImageView])
         centerStackView.axis = .vertical
         centerStackView.spacing = 16
         
-        let productDetailsStackView = VerticalStackView(arrangedSubviews: [nameBrandStackView, ratingsStackView, centerStackView], spacing: 10)
+        let productDetailsStackView = UIStackView(arrangedSubviews: [ centerStackView])
         
         addSubview(productDetailsStackView)
         productDetailsStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 10))

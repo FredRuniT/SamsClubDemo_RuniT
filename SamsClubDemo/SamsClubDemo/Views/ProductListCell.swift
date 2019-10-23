@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ProductListCell: UICollectionViewCell {
-    
+
     var product: Products! {
         didSet {
             productNameLabel.text = product.productName
