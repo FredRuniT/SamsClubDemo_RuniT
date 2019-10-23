@@ -22,9 +22,8 @@ class ProductListCell: UICollectionViewCell {
     
      lazy var productNameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.font = UIFont.preferredFont(forTextStyle: .callout)
+        nameLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         nameLabel.adjustsFontSizeToFitWidth = true
-        nameLabel.adjustsFontForContentSizeCategory = true
         nameLabel.adjustsFontForContentSizeCategory = true
         nameLabel.numberOfLines = 2
         return nameLabel
@@ -36,15 +35,13 @@ class ProductListCell: UICollectionViewCell {
         priceLabel.textColor = .darkGray
         priceLabel.adjustsFontSizeToFitWidth = true
         priceLabel.adjustsFontForContentSizeCategory = true
-        priceLabel.adjustsFontForContentSizeCategory = true
         return priceLabel
     }()
     
-     lazy var productInstockLabel: UILabel = {
+      var productInstockLabel: UILabel = {
         let instockLabel = UILabel()
         instockLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         instockLabel.adjustsFontSizeToFitWidth = true
-        instockLabel.adjustsFontForContentSizeCategory = true
         instockLabel.adjustsFontForContentSizeCategory = true
         return instockLabel
     }()
@@ -53,8 +50,6 @@ class ProductListCell: UICollectionViewCell {
         let productRatingLabel = UILabel()
         productRatingLabel.adjustsFontForContentSizeCategory = true
         productRatingLabel.adjustsFontSizeToFitWidth = true
-        productRatingLabel.adjustsFontForContentSizeCategory = true
-        productRatingLabel.adjustsFontForContentSizeCategory = true
         return productRatingLabel
     }()
     
@@ -76,13 +71,14 @@ class ProductListCell: UICollectionViewCell {
         let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, productRatingLabel,productPriceLabel, productInstockLabel])
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 5
+        labelsStackView.distribution = .fillProportionally
         
-        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView, viewProductButton,])
+        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView])
         productStackView.spacing = 10
         productStackView.alignment = .center
         
         addSubview(productStackView)
-        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
+        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 20))
         
     }
     

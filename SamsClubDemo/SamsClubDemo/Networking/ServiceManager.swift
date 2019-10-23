@@ -11,7 +11,11 @@ import Foundation
 
 class ServiceManager {
     
+    //MARK: Singleton
+    static let shared = ServiceManager()
+    
      func fetchProductInventory(completion: @escaping (Result<Inventory, Error>) -> ()) {
+        
         
         let urlString = "https://mobile-tha-server.firebaseapp.com/walmartproducts/8/8"
         guard let apiUrl = URL(string: urlString) else {return}

@@ -40,6 +40,14 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
+    init() {
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -52,7 +60,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
-        
+        //TODO: REFactor Out
         let productResult = productResults[indexPath.row]
         let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
         let imageUrl = URL(string: baseUrl + productResult.productImage)
@@ -73,14 +81,28 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 130)
-    }
-    
-    init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        
+          //TODO: REFactor Out
+        let productResult = productResults[indexPath.row]
+        let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 500))
+        
+        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+            let imageUrl = URL(string: baseUrl + productResult.productImage)
+            
+            cell.productNameLabel.text = productResult.productName
+            cell.productPriceLabel.text = productResult.price
+            cell.productRatingLabel.text = String(productResult.reviewCount)
+            cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+            
+            if productResult.inStock {
+                cell.productInstockLabel.text = "In Stock"
+            } else {
+                cell.productInstockLabel.text = "Out of Stock"
+                cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
+            }
+           cell.layoutIfNeeded()
+        let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 500))
+     
+        return .init(width: view.frame.width, height: estimatedSize.height)
     }
 }
