@@ -11,7 +11,7 @@ import Foundation
 
 class ServiceManager {
     
-     func getProducts(completion: @escaping (Result<Inventory, Error>) -> ()) {
+     func fetchProductInventory(completion: @escaping (Result<Inventory, Error>) -> ()) {
         
         let urlString = "https://mobile-tha-server.firebaseapp.com/walmartproducts/8/8"
         guard let apiUrl = URL(string: urlString) else {return}
@@ -23,8 +23,8 @@ class ServiceManager {
             }
             do {
                 guard let data = data else {return}
-                let products = try JSONDecoder().decode(Inventory.self, from: data)
-                completion(.success(products))
+                let inventory = try JSONDecoder().decode(Inventory.self, from: data)
+                completion(.success(inventory))
                 
             } catch let jsonError {
                 completion(.failure(jsonError))

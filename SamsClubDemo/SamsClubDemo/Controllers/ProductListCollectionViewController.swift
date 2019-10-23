@@ -20,7 +20,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
-        serviceManager.getProducts { (result) in
+        serviceManager.fetchProductInventory { (result) in
             switch result {
                 
             case .success(let inventoryItems):
@@ -41,11 +41,9 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     // MARK: UICollectionViewDataSource
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -54,9 +52,22 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
-        let productResult = productResults[indexPath.row]
-        cell.app = productResult
         
+        let productResult = productResults[indexPath.row]
+        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+        let imageUrl = URL(string: baseUrl + productResult.productImage)
+        
+        cell.productNameLabel.text = productResult.productName
+        cell.productPriceLabel.text = productResult.price
+        cell.productRatingLabel.text = String(productResult.reviewCount)
+        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        
+        if productResult.inStock {
+            cell.productInstockLabel.text = "In Stock"
+        } else {
+            cell.productInstockLabel.text = "Out of Stock"
+            cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
+        }
         
         return cell
     }
@@ -65,36 +76,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         return .init(width: view.frame.width, height: 130)
     }
     
-    // MARK: UICollectionViewDelegate
-    
-    /*
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-     
-     }
-     */
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
