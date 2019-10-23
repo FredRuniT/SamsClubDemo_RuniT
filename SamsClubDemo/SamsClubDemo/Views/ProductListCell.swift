@@ -29,7 +29,7 @@ class ProductListCell: UICollectionViewCell {
     
     let productPriceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.text = "$550.00"
+        priceLabel.text = ""
         priceLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         priceLabel.textColor = .darkGray
         priceLabel.adjustsFontForContentSizeCategory = true
@@ -38,7 +38,7 @@ class ProductListCell: UICollectionViewCell {
     
     let productInstockLabel: UILabel = {
         let instockLabel = UILabel()
-        instockLabel.text = "InStock"
+        instockLabel.text = ""
         instockLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         return instockLabel
     }()
