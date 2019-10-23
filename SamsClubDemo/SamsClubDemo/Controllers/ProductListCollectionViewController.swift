@@ -73,7 +73,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
             cell.productInstockLabel.text = "In Stock"
         } else {
             cell.productInstockLabel.text = "Out of Stock"
-            cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
         }
         
         for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
