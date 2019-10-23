@@ -71,7 +71,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 120)
+        return .init(width: view.frame.width, height: 130)
     }
     
     // MARK: UICollectionViewDelegate

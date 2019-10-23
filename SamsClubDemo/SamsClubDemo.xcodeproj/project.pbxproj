@@ -154,8 +154,8 @@
 		F6727F9D235EAE0D005B4A2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */,
 				F6727FA5235EBABE005B4A2C /* ProductListCollectionViewController.swift */,
+				F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */,
 				F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */,
 			);
 			path = Controllers;
