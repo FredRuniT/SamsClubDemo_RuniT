@@ -22,14 +22,15 @@ class ProductListCell: UICollectionViewCell {
     
     let productNameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         nameLabel.numberOfLines = 2
         return nameLabel
     }()
     
     let productPriceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         priceLabel.textColor = .darkGray
         priceLabel.adjustsFontForContentSizeCategory = true
         return priceLabel
@@ -37,7 +38,7 @@ class ProductListCell: UICollectionViewCell {
     
     let productInstockLabel: UILabel = {
         let instockLabel = UILabel()
-        instockLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        instockLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return instockLabel
     }()
     
