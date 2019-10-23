@@ -11,8 +11,8 @@ import UIKit
 
 class ProductListCell: UICollectionViewCell {
     
-    let productImageView: UIImageView = {
-        let imageView = UIImageView()
+    lazy var productImageView: UIImageView = {
+        var imageView = UIImageView()
         imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         imageView.layer.cornerRadius = 10
@@ -20,7 +20,7 @@ class ProductListCell: UICollectionViewCell {
         return imageView
     }()
     
-    let productNameLabel: UILabel = {
+     lazy var productNameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         nameLabel.adjustsFontSizeToFitWidth = true
@@ -30,7 +30,7 @@ class ProductListCell: UICollectionViewCell {
         return nameLabel
     }()
     
-    let productPriceLabel: UILabel = {
+     lazy var productPriceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         priceLabel.textColor = .darkGray
@@ -40,7 +40,7 @@ class ProductListCell: UICollectionViewCell {
         return priceLabel
     }()
     
-    let productInstockLabel: UILabel = {
+     lazy var productInstockLabel: UILabel = {
         let instockLabel = UILabel()
         instockLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         instockLabel.adjustsFontSizeToFitWidth = true
@@ -49,7 +49,7 @@ class ProductListCell: UICollectionViewCell {
         return instockLabel
     }()
     
-    let productRatingLabel: UILabel = {
+     lazy var productRatingLabel: UILabel = {
         let productRatingLabel = UILabel()
         productRatingLabel.adjustsFontForContentSizeCategory = true
         productRatingLabel.adjustsFontSizeToFitWidth = true
@@ -58,7 +58,7 @@ class ProductListCell: UICollectionViewCell {
         return productRatingLabel
     }()
     
-    let viewProductButton: UIButton = {
+     lazy var viewProductButton: UIButton = {
         let viewProductButton = UIButton(type: .system)
         viewProductButton.setTitle("VIEW", for: .normal)
         viewProductButton.setTitleColor(.blue, for: .normal)
