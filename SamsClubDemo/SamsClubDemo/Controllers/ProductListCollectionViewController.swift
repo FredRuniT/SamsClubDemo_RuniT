@@ -55,14 +55,19 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
         let productResult = productResults[indexPath.row]
-        cell.app = productResult
+        cell.product = productResult
         
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 130)
+        let productResult = productResults[indexPath.row]
+        let listCell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 300))
+        listCell.product = productResult
+        
+        let estimatedSize = listCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 300))
+        return .init(width: view.frame.width, height: estimatedSize.height)
     }
     
     // MARK: UICollectionViewDelegate

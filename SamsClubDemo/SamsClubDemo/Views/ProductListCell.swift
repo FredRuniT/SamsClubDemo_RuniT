@@ -11,54 +11,67 @@ import UIKit
 
 class ProductListCell: UICollectionViewCell {
     
+    var product: Products! {
+        didSet {
+            productNameLabel.text = product.productName
+            productPriceLabel.text = product.price
+            productRatingLabel.text = String(product.reviewCount)
+            let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+            let imageUrl = URL(string: baseUrl + product.productImage)
+            productImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "loadingPlaceHolderImageSmall"), options: .avoidAutoSetImage, completed: nil)
+            productImageView.sd_setImage(with: imageUrl, completed: nil)
+            
+            if product.inStock {
+                productInstockLabel.text = "In Stock"
+            } else {
+                productInstockLabel.text = "Out of Stock"
+                productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
+            }
+        }
+    }
+    
     lazy var productImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         imageView.layer.cornerRadius = 10
-        imageView.backgroundColor = .blue
         return imageView
     }()
     
-     lazy var productNameLabel: UILabel = {
+    lazy var productNameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.adjustsFontForContentSizeCategory = true
-        nameLabel.adjustsFontForContentSizeCategory = true
-        nameLabel.numberOfLines = 2
+        nameLabel.numberOfLines = 0
         return nameLabel
     }()
     
-     lazy var productPriceLabel: UILabel = {
+    lazy var productPriceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         priceLabel.textColor = .darkGray
         priceLabel.adjustsFontSizeToFitWidth = true
         priceLabel.adjustsFontForContentSizeCategory = true
-        priceLabel.adjustsFontForContentSizeCategory = true
         return priceLabel
     }()
     
-     lazy var productInstockLabel: UILabel = {
+    lazy var productInstockLabel: UILabel = {
         let instockLabel = UILabel()
         instockLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         instockLabel.adjustsFontSizeToFitWidth = true
         instockLabel.adjustsFontForContentSizeCategory = true
-        instockLabel.adjustsFontForContentSizeCategory = true
         return instockLabel
     }()
     
-     lazy var productRatingLabel: UILabel = {
+    lazy var productRatingLabel: UILabel = {
         let productRatingLabel = UILabel()
-        productRatingLabel.adjustsFontForContentSizeCategory = true
         productRatingLabel.adjustsFontSizeToFitWidth = true
-        productRatingLabel.adjustsFontForContentSizeCategory = true
         productRatingLabel.adjustsFontForContentSizeCategory = true
         return productRatingLabel
     }()
     
-     lazy var viewProductButton: UIButton = {
+    lazy var viewProductButton: UIButton = {
         let viewProductButton = UIButton(type: .system)
         viewProductButton.setTitle("VIEW", for: .normal)
         viewProductButton.setTitleColor(.blue, for: .normal)
@@ -77,7 +90,7 @@ class ProductListCell: UICollectionViewCell {
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 5
         
-        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView, viewProductButton,])
+        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView])
         productStackView.spacing = 10
         productStackView.alignment = .center
         
