@@ -19,13 +19,13 @@ struct Inventory: Decodable {
 
 //MARK: - Products
 struct Products: Decodable {
-    let productId: String
-    let productName: String
-    let shortDescription: String
-    let longDescription: String
-    let price: String
+    let productId: String?
+    let productName: String?
+    let shortDescription: String?
+    let longDescription: String?
+    let price: String?
     let productImage: String
     var reviewRating: Float?
-    let reviewCount: Int
-    let inStock: Bool
+    let reviewCount: Int?
+    let inStock: Bool?
 }

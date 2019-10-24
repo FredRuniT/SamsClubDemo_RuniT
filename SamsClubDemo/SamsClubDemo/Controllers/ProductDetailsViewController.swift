@@ -24,8 +24,6 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productLongDescriptionLabel: UILabel!
     @IBOutlet weak var showFullDescriptonButton: UIButton!
 
-    
-    
     @IBOutlet weak var starRatingStackView: UIStackView!
     
     override func viewDidLoad() {
@@ -47,13 +45,13 @@ class ProductDetailsViewController: UIViewController {
         let imageUrl = URL(string: baseUrl + product.productImage)
         self.productImageView?.sd_setImage(with: imageUrl?.absoluteURL, completed: nil)
         
-        productBrandLabel.text = product.productName.components(separatedBy: " ").first
-        productNameLabel.attributedText = product.productName.htmlToAttributedString
+        productBrandLabel.text = product.productName?.components(separatedBy: " ").first
+        productNameLabel.attributedText = product.productName?.htmlToAttributedString
         productPriceLabel.text = product.price
-        productRatingCountLabel.text = "\(product.reviewCount)"
+        productRatingCountLabel.text = "\(product.reviewCount ?? 0)"
         productImageView.sd_setImage(with: imageUrl, completed: nil)
-        productLongDescriptionLabel.attributedText = product.longDescription.htmlToAttributedString
-        productShortDescription.attributedText = product.shortDescription.htmlToAttributedString
+        productLongDescriptionLabel.attributedText = product.longDescription?.htmlToAttributedString
+        productShortDescription.attributedText = product.shortDescription?.htmlToAttributedString
         
         var arrangedSubviews = [UIView]()
         
@@ -71,10 +69,10 @@ class ProductDetailsViewController: UIViewController {
             if product.reviewCount == 0 {
                 starRatingStackView.isHidden = true
             }
-            view.alpha = index >= product.reviewCount ? 0 : 1
+            view.alpha = index >= product.reviewCount ?? 0 ? 0 : 1
         }
         
-        if product.inStock {
+        if product.inStock ?? false {
             productInstockLabel.text = "In Stock"
         } else {
             productInstockLabel.text = "Out of Stock"

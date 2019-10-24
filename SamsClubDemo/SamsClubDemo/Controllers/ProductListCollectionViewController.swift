@@ -89,9 +89,10 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
         //TODO: REFactor Out
         
-        if let inventory = self.inventory  {
+        if let inventory = self.inventory?.products  {
             
-            let productResult = inventory.products[indexPath.row]
+             let productResult = inventory[indexPath.row]
+            
             let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
             let imageUrl = URL(string: baseUrl + productResult.productImage)
             
@@ -99,7 +100,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
             cell.productPriceLabel.text = productResult.price
             cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
             
-            if productResult.inStock {
+            if productResult.inStock ?? false {
                 cell.productInstockLabel.text = "In Stock"
             } else {
                 cell.productInstockLabel.text = "Out of Stock"
@@ -109,7 +110,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
                 if productResult.reviewCount == 0 {
                     cell.starRatingStackView.isHidden = true
                 }
-                view.alpha = index >= productResult.reviewCount ? 0 : 1
+                view.alpha = index >= productResult.reviewCount ?? 0 ? 0 : 1
             }
             
         }
@@ -138,14 +139,14 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         cell.productPriceLabel.text = productResult.price
         cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
         
-        if productResult.inStock {
+            if productResult.inStock ?? false {
             cell.productInstockLabel.text = "In Stock"
         } else {
             cell.productInstockLabel.text = "Out of Stock"
             cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
         }
         for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
-            view.alpha = index >= productResult.reviewCount ? 0 : 1
+            view.alpha = index >= productResult.reviewCount ?? 0 ? 0 : 1
         }
         cell.layoutIfNeeded()
         let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
