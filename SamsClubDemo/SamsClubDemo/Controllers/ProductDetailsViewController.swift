@@ -46,22 +46,14 @@ class ProductDetailsViewController: UIViewController {
         let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
         let imageUrl = URL(string: baseUrl + product.productImage)
         self.productImageView?.sd_setImage(with: imageUrl?.absoluteURL, completed: nil)
-        let nonFormatedTextLongDescription = product.longDescription
-        guard let longTextDoc: Document = try? SwiftSoup.parse(nonFormatedTextLongDescription) else { return } // parse html
-        guard let formatedTextLongDescription = try? longTextDoc.text() else { return }
-        
-        let nonFormatedShortDescription = product.longDescription
-        guard let shortTextDoc: Document = try? SwiftSoup.parse(nonFormatedShortDescription) else { return } // parse html
-        guard let formatedShortDescription = try? shortTextDoc.text() else { return }
         
         productBrandLabel.text = product.productName.components(separatedBy: " ").first
-        productNameLabel.text = product.productName
+        productNameLabel.attributedText = product.productName.htmlToAttributedString
         productPriceLabel.text = product.price
         productRatingCountLabel.text = "\(product.reviewCount)"
         productImageView.sd_setImage(with: imageUrl, completed: nil)
-        productShortDescription.text = formatedShortDescription
-        productLongDescriptionLabel.text = formatedTextLongDescription
-        
+        productLongDescriptionLabel.attributedText = product.longDescription.htmlToAttributedString
+        productShortDescription.attributedText = product.shortDescription.htmlToAttributedString
         
         var arrangedSubviews = [UIView]()
         
