@@ -93,7 +93,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         let productInventory = inventory?.products[indexPath.item]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
-        detailsVC.productResults = productInventory
+        detailsVC.product = productInventory
         navigationController?.pushViewController(detailsVC, animated: true)
     }
     

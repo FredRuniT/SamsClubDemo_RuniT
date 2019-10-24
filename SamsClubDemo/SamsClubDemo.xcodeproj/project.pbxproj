@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A49A8121B006799CCF10DCF7 /* Pods_SamsClubDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D0107B38C59969D265D0E2B /* Pods_SamsClubDemo.framework */; };
-		F607DB522360BE1E00271CB8 /* ProductDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB512360BE1E00271CB8 /* ProductDetailsCell.swift */; };
 		F607DB562360BE7D00271CB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB552360BE7D00271CB8 /* Extensions.swift */; };
-		F607DB582360D4A700271CB8 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB572360D4A700271CB8 /* ProductDetailsViewController.swift */; };
+		F607DB5A23617DAA00271CB8 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */; };
+		F607DB5C2361822600271CB8 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB5B2361822600271CB8 /* DetailsViewModel.swift */; };
 		F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */; };
 		F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */; };
 		F6727F75235EA9E0005B4A2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F73235EA9E0005B4A2C /* Main.storyboard */; };
@@ -51,9 +51,9 @@
 		0D0107B38C59969D265D0E2B /* Pods_SamsClubDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamsClubDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C02BF3D0CE01F7EA3F3082 /* Pods-SamsClubDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamsClubDemo.debug.xcconfig"; path = "Target Support Files/Pods-SamsClubDemo/Pods-SamsClubDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D170FE63846EC2FD8EAAE63E /* Pods-SamsClubDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamsClubDemo.release.xcconfig"; path = "Target Support Files/Pods-SamsClubDemo/Pods-SamsClubDemo.release.xcconfig"; sourceTree = "<group>"; };
-		F607DB512360BE1E00271CB8 /* ProductDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsCell.swift; sourceTree = "<group>"; };
 		F607DB552360BE7D00271CB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		F607DB572360D4A700271CB8 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		F607DB5B2361822600271CB8 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F6727F6A235EA9E0005B4A2C /* SamsClubDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamsClubDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,8 +176,8 @@
 		F6727F9D235EAE0D005B4A2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */,
 				F6727FA5235EBABE005B4A2C /* ProductListCollectionViewController.swift */,
-				F607DB572360D4A700271CB8 /* ProductDetailsViewController.swift */,
 				F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */,
 				F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */,
 			);
@@ -202,6 +202,7 @@
 		F6727FA0235EAE3B005B4A2C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F607DB5B2361822600271CB8 /* DetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -211,7 +212,6 @@
 			children = (
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
 				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
-				F607DB512360BE1E00271CB8 /* ProductDetailsCell.swift */,
 				F6727FAD235EC412005B4A2C /* SavedItemsCollectionViewCell.swift */,
 			);
 			path = Views;
@@ -429,12 +429,11 @@
 			files = (
 				F6727FA6235EBABE005B4A2C /* ProductListCollectionViewController.swift in Sources */,
 				F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */,
+				F607DB5C2361822600271CB8 /* DetailsViewModel.swift in Sources */,
 				F6727FA8235EBB17005B4A2C /* SavedItemsCollectionViewController.swift in Sources */,
-				F607DB582360D4A700271CB8 /* ProductDetailsViewController.swift in Sources */,
 				F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */,
 				F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */,
 				F6727FA4235EAF31005B4A2C /* BaseTabBarController.swift in Sources */,
-				F607DB522360BE1E00271CB8 /* ProductDetailsCell.swift in Sources */,
 				F6727FE4235FFE40005B4A2C /* ServiceManager.swift in Sources */,
 				F6727FEA235FFE64005B4A2C /* UIView+Layout.swift in Sources */,
 				F6727FDE235FFDDA005B4A2C /* Products.swift in Sources */,
@@ -442,6 +441,7 @@
 				F6727FAE235EC412005B4A2C /* SavedItemsCollectionViewCell.swift in Sources */,
 				F6727FAC235EC2CA005B4A2C /* ProductListCell.swift in Sources */,
 				F607DB562360BE7D00271CB8 /* Extensions.swift in Sources */,
+				F607DB5A23617DAA00271CB8 /* ProductDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,6 +62,8 @@ class ProductListCell: UICollectionViewCell {
         productStackView.alignment = .center
         
         addSubview(productStackView)
+        productImageView.constrainWidth(constant: 80)
+        productImageView.constrainHeight(constant: 60)
         productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 20))
         
     }
