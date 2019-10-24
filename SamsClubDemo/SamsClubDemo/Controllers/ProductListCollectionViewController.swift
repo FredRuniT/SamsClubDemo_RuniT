@@ -9,7 +9,8 @@
 import UIKit
 import SDWebImage
 
-private let reuseIdentifier = "productlistcell"
+fileprivate let reuseIdentifier = "productlistcell"
+fileprivate let footerID = "loadingfooterID"
 
 class ProductListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -18,25 +19,16 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .white
-        serviceManager.fetchProductInventory { (result) in
-            switch result {
-                
-            case .success(let inventoryItems):
-                self.inventory = inventoryItems
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
-            case.failure(let err):
-                //TODO Show Meaningful Message
-                print("Failed to fetch products", err)
-            }
-        }
         
+        self.fetchData()
+        
+        collectionView.backgroundColor = .white
+
         // Register cell classes
         self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        //Register Footer
+        collectionView.register(ProductLoadindFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +44,36 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func fetchData() {
+        serviceManager.fetchProductInventory { (result) in
+            switch result {
+                
+            case .success(let inventoryItems):
+                self.inventory = inventoryItems
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+            case.failure(let err):
+                //TODO Show Meaningful Message
+                print("Failed to fetch products", err)
+            }
+        }
+    }
+    
+
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let loadingFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerID, for: indexPath)
+        return loadingFooter
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return .init(width: view.frame.width, height: 100)
+    }
+    
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -61,6 +83,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         // #warning Incomplete implementation, return the number of items
         return inventory?.products.count ?? 0
     }
+
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell

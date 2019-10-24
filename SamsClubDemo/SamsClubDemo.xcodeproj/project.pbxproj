@@ -11,6 +11,7 @@
 		F607DB562360BE7D00271CB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB552360BE7D00271CB8 /* Extensions.swift */; };
 		F607DB5A23617DAA00271CB8 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */; };
 		F607DB5C2361822600271CB8 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB5B2361822600271CB8 /* DetailsViewModel.swift */; };
+		F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */; };
 		F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */; };
 		F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */; };
 		F6727F75235EA9E0005B4A2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F73235EA9E0005B4A2C /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		F607DB552360BE7D00271CB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		F607DB5B2361822600271CB8 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductLoadingFoooter.swift; sourceTree = "<group>"; };
 		F6727F6A235EA9E0005B4A2C /* SamsClubDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamsClubDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
 				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
 				F6727FAD235EC412005B4A2C /* SavedItemsCollectionViewCell.swift */,
+				F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				F6727FA6235EBABE005B4A2C /* ProductListCollectionViewController.swift in Sources */,
 				F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */,
 				F607DB5C2361822600271CB8 /* DetailsViewModel.swift in Sources */,
+				F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */,
 				F6727FA8235EBB17005B4A2C /* SavedItemsCollectionViewController.swift in Sources */,
 				F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */,
 				F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */,
