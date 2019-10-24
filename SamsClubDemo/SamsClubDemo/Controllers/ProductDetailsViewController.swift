@@ -23,7 +23,7 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productShortDescription: UILabel!
     @IBOutlet weak var productLongDescriptionLabel: UILabel!
     @IBOutlet weak var showFullDescriptonButton: UIButton!
-    
+
     
     
     @IBOutlet weak var starRatingStackView: UIStackView!
