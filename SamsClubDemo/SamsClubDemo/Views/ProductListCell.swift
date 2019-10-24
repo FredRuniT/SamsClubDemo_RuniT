@@ -11,10 +11,11 @@ import UIKit
 
 class ProductListCell: UICollectionViewCell {
     
+     let productDetailsVC = ProductDetailsViewController()
     
     lazy var productImageView = UIImageView(cornerRadius: 0)
     
-    lazy var productNameLabel = UILabel(text: "Product Name", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
+    lazy var productNameLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
     
     lazy var productPriceLabel = UILabel(text: "$500", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .gray)
     

@@ -14,7 +14,7 @@ private let reuseIdentifier = "productlistcell"
 class ProductListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate var serviceManager = ServiceManager()
-    fileprivate var productResults = [Products]()
+    fileprivate var inventory: Inventory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
             switch result {
                 
             case .success(let inventoryItems):
-                self.productResults = inventoryItems.products
+                self.inventory = inventoryItems
                 
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -55,40 +55,53 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.productResults.count
+        return inventory?.products.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
         //TODO: REFactor Out
-        let productResult = productResults[indexPath.row]
-        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
-        let imageUrl = URL(string: baseUrl + productResult.productImage)
         
-        cell.productNameLabel.text = productResult.productName
-        cell.productPriceLabel.text = productResult.price
-        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
-        
-        if productResult.inStock {
-            cell.productInstockLabel.text = "In Stock"
-        } else {
-            cell.productInstockLabel.text = "Out of Stock"
-        }
-        
-        for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
-            if productResult.reviewCount == 0 {
-                cell.starRatingStackView.isHidden = true
+        if let inventory = self.inventory  {
+            
+            let productResult = inventory.products[indexPath.row]
+            let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+            let imageUrl = URL(string: baseUrl + productResult.productImage)
+            
+            cell.productNameLabel.text = productResult.productName
+            cell.productPriceLabel.text = productResult.price
+            cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+            
+            if productResult.inStock {
+                cell.productInstockLabel.text = "In Stock"
+            } else {
+                cell.productInstockLabel.text = "Out of Stock"
             }
-            view.alpha = index >= productResult.reviewCount ? 0 : 1
+            
+            for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
+                if productResult.reviewCount == 0 {
+                    cell.starRatingStackView.isHidden = true
+                }
+                view.alpha = index >= productResult.reviewCount ? 0 : 1
+            }
+            
         }
-        
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productInventory = inventory?.products[indexPath.item]
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
+        detailsVC.productResults = productInventory
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+         if let inventory = self.inventory  {
         //TODO: REFactor Out
-        let productResult = productResults[indexPath.row]
+        let productResult = inventory.products[indexPath.row]
         let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 150))
         
         let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
@@ -111,5 +124,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
         
         return .init(width: view.frame.width, height: estimatedSize.height)
+        }
+        return CGSize()
     }
 }
