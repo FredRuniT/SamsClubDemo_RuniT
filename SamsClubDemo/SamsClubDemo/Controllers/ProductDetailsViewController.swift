@@ -88,6 +88,11 @@ class ProductDetailsViewController: UIViewController {
             productInstockLabel.text = "Out of Stock"
             productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
         }
+        if product.reviewCount == 0 {
+            for view in [starRatingStackView, productRatingCountLabel] {
+                view?.isHidden = true
+            }
+        }
         view.addSubview(starRatingStackView)
     }
     

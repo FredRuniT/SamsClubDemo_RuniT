@@ -18,7 +18,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.backgroundColor = .white
         serviceManager.fetchProductInventory { (result) in
             switch result {
@@ -38,6 +37,11 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         
         // Register cell classes
         self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     init() {
