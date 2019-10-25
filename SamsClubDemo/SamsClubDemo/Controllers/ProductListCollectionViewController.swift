@@ -18,9 +18,11 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     fileprivate var serviceManager = ServiceManager()
     fileprivate var inventoryResults: Inventory?
     fileprivate var inventoryProducts = [Products]()
+    fileprivate var productListViewModel = ProductListViewModel()
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
+   
     
     override func viewDidLoad() {
         
@@ -57,15 +59,27 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
             switch result {
                 
             case .success(let inventoryItems):
+                
+                if inventoryItems.statusCode == 400 {
+                    DispatchQueue.main.async {
+                        self.collectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
+                    }
+                    
+                } else if inventoryItems.statusCode == 500 {
+                    self.collectionView.backgroundView = self.productListViewModel.serverErorrImageVIew
+                }
                 self.inventoryResults = inventoryItems
                 self.inventoryProducts = inventoryItems.products
+                
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
                 
             case.failure(let err):
-                //TODO Show Meaningful Message
-                print("Failed to fetch products", err)
+                print(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.collectionView.backgroundView = self.productListViewModel.poorConnectionImageView
+                }
             }
         }
     }

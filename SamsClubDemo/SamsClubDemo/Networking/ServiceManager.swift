@@ -23,6 +23,7 @@ class ServiceManager {
         URLSession.shared.dataTask(with: apiUrl) { (result) in
             switch result {
             case .success(let (response, data)):
+                response
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
                     completion(.failure(.invalidResponse))
                     return

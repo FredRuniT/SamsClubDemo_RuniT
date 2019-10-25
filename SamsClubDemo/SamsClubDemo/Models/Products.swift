@@ -11,7 +11,7 @@ import Foundation
 //MARK - Possible API Service Errors
 public enum APIServiceError: Error {
     case apiError
-    case invalidEndpoint
+    case serverError
     case invalidResponse
     case noData
     case decodeError
