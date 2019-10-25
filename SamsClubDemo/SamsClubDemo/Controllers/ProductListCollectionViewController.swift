@@ -23,7 +23,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
    
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -31,6 +30,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         
         //TODO: Move to View Model
         collectionView.backgroundColor = .systemBackground
+        
         
         // Register cell classes
         self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -42,6 +42,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.backgroundColor = .systemBackground
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     init() {
@@ -112,6 +114,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         
         cell.configure(withProductResult: productResult)
         cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
+        cell.backgroundColor = .secondarySystemBackground
+        cell.layer.cornerRadius = 5
         
         if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
             //TODO: Mark Up
@@ -137,7 +141,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
                     self.isPaginating = false
                     
                 case.failure(let err):
-                    //TODO Show Meaningful Message
                     print("Failed to fetch products", err)
                 }
             }

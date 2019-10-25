@@ -50,6 +50,7 @@ class ProductDetailsViewController: UIViewController {
         productShortDescription.textColor = .label
         productLongDescriptionLabel.textColor = .label
         productNameLabel.textColor = .label
+        productLongDescriptionLabel.backgroundColor = .secondarySystemBackground
         
         productShortDescription.font = .preferredFont(forTextStyle: .body)
         productPriceLabel.font = .preferredFont(forTextStyle: .headline)
@@ -68,7 +69,7 @@ class ProductDetailsViewController: UIViewController {
     }
     
     @IBAction func showFullDecription ( _sender: UIButton) {
-        UIView.animate(withDuration: 0.8) {
+        UIView.animate(withDuration: 0.3) {
             self.productLongDescriptionLabel.isHidden.toggle()
             if self.productLongDescriptionLabel.isHidden {
                 self.showFullDescriptonButton.setTitle("Show Full Product Description", for: .normal)
