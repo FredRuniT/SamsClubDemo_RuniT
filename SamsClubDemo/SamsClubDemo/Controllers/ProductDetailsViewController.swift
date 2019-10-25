@@ -11,7 +11,6 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var productInstockLabel: UILabel!
     @IBOutlet weak var productBrandLabel: UILabel!
-    @IBOutlet weak var productRatingCountLabel: UILabel!
     @IBOutlet weak var productShortDescription: UILabel!
     @IBOutlet weak var productLongDescriptionLabel: UILabel!
     @IBOutlet weak var showFullDescriptonButton: UIButton!
