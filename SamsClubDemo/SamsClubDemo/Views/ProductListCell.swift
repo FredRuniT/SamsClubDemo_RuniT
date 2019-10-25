@@ -12,7 +12,7 @@ import Cosmos
 
 class ProductListCell: UICollectionViewCell {
     
-     let productDetailsVC = ProductDetailsViewController()
+    let productDetailsVC = ProductDetailsViewController()
     
     lazy var productImageView = UIImageView(cornerRadius: 0)
     
@@ -23,11 +23,12 @@ class ProductListCell: UICollectionViewCell {
     lazy var productInstockLabel = UILabel(text: "In Stock", font: .preferredFont(forTextStyle: .caption1))
     
     lazy var productRatingLabel = UILabel(text: "Rating", font: .preferredFont(forTextStyle: .caption1))
+    
     lazy var cosmosView: CosmosView = {
         var cosmosView = CosmosView()
         cosmosView.settings.updateOnTouch = false
         cosmosView.settings.totalStars = 5
-        cosmosView.settings.starSize = 24
+        cosmosView.settings.starSize = 16
         cosmosView.settings.starMargin = 3
         cosmosView.settings.fillMode = .precise
         cosmosView.settings.textMargin = 5
@@ -36,36 +37,34 @@ class ProductListCell: UICollectionViewCell {
         return cosmosView
     }()
     
-    
     lazy var viewProductButton: UIButton = {
         let viewProductButton = UIButton(type: .system)
-        viewProductButton.setTitle("VIEW", for: .normal)
-        viewProductButton.setTitleColor(.blue, for: .normal)
-        viewProductButton.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        viewProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
         viewProductButton.layer.cornerRadius = 10
-        viewProductButton.backgroundColor = UIColor(white: 0.90, alpha: 1)
-        viewProductButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        viewProductButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        viewProductButton.constrainWidth(constant: 80)
+        viewProductButton.constrainHeight(constant: 30)
         return viewProductButton
     }()
     
-  
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        productImageView.constrainWidth(constant: 80)
+        productImageView.constrainHeight(constant: 60)
         
         let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, cosmosView, productPriceLabel, productInstockLabel])
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 5
         
-        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView])
+        let viewProductButtonSV = UIStackView(arrangedSubviews: [viewProductButton])
+        
+        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView, viewProductButtonSV])
         productStackView.spacing = 10
         productStackView.alignment = .center
         
         addSubview(productStackView)
-        productImageView.constrainWidth(constant: 80)
-        productImageView.constrainHeight(constant: 60)
-        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 20))
+        
+        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
         
     }
     

@@ -20,7 +20,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     fileprivate var inventoryProducts = [Products]()
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
-    
     var productPageNumber = 1
     
     override func viewDidLoad() {
@@ -104,15 +103,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         cell.productPriceLabel.text = productResult.price
         cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
         cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
-        cell.cosmosView.text = "\(productResult.reviewCount ?? 0)"
-        
-        
-        
-        if productResult.inStock ?? false {
-            cell.productInstockLabel.text = "In Stock"
-        } else {
-            cell.productInstockLabel.text = "Out of Stock"
-        }
+        cell.productInstockLabel.text = productResult.inStock ?? false ? "In Stock" :"Out of Stock"
         
         if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
             //TODO: Mark Up
@@ -155,32 +146,13 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         navigationController?.pushViewController(detailsVC, animated: true)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //TODO: REFactor Out
-        let productResult = inventoryProducts[indexPath.row]
-        let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 150))
+        let collectionViewSize = collectionView.frame.size.width
         
-        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
-        let imageUrl = URL(string: baseUrl + productResult.productImage)
-        
-        cell.productNameLabel.text = productResult.productName
-        cell.productPriceLabel.text = productResult.price
-        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
-        
-        if productResult.inStock ?? false {
-            cell.productInstockLabel.text = "In Stock"
-        } else {
-            cell.productInstockLabel.text = "Out of Stock"
-            cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
+        if UIDevice().userInterfaceIdiom == .pad {
+            return CGSize(width: collectionViewSize / 2, height: 120)
         }
-        cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
-        cell.cosmosView.text = "\(productResult.reviewCount ?? 0)"
-        cell.layoutIfNeeded()
-        let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
-        
-        return .init(width: view.frame.width, height: estimatedSize.height)
-        
+        return CGSize(width: collectionViewSize, height: 120)
     }
 }

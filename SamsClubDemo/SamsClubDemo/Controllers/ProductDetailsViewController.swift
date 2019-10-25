@@ -43,7 +43,7 @@ class ProductDetailsViewController: UIViewController {
         productImageView.sd_setImage(with: imageUrl, completed: nil)
         productLongDescriptionLabel.attributedText = product.longDescription?.htmlToAttributedString
         productShortDescription.attributedText = product.shortDescription?.htmlToAttributedString
-        productInstockLabel.text = product.inStock! ? "In Stock" :"Out of Stock"
+        productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         setUpReviewUi()
     }
     
