@@ -26,7 +26,7 @@ class ProductDetailsViewController: UIViewController {
         self.product = product
         self.update()
     }
-
+    
     func update() {
         guard let product = self.product else {
             return
@@ -42,7 +42,10 @@ class ProductDetailsViewController: UIViewController {
         productPriceLabel.text = product.price
         productImageView.sd_setImage(with: imageUrl, completed: nil)
         productLongDescriptionLabel.attributedText = product.longDescription?.htmlToAttributedString
+        productLongDescriptionLabel.textColor = .label
+        
         productShortDescription.attributedText = product.shortDescription?.htmlToAttributedString
+        productShortDescription.textColor = .label
         productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         setUpReviewUi()
     }
@@ -59,7 +62,7 @@ class ProductDetailsViewController: UIViewController {
             self.productLongDescriptionLabel.isHidden.toggle()
             self.productShortDescription.isHidden.toggle()
             if self.productLongDescriptionLabel.isHidden {
-                 self.showFullDescriptonButton.setTitle("Show Full Product Description", for: .normal)
+                self.showFullDescriptonButton.setTitle("Show Full Product Description", for: .normal)
                 self.productLongDescriptionLabel.alpha = 0
                 self.productShortDescription.alpha = 1
             } else {

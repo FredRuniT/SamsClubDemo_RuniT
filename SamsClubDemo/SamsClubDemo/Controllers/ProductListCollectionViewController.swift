@@ -28,7 +28,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         self.fetchData()
         
         //TODO: Move to View Model
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         
         // Register cell classes
         self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)

@@ -14,7 +14,7 @@ extension UILabel {
         self.text = text
         self.font = font
         self.numberOfLines = 2
-        self.textColor = .black
+        self.textColor = .label
         self.adjustsFontSizeToFitWidth = true
         self.adjustsFontForContentSizeCategory = true
     }

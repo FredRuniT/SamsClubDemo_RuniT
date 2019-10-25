@@ -19,7 +19,7 @@ class ProductListCell: UICollectionViewCell {
     
     lazy var productNameLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
     
-    lazy var productPriceLabel = UILabel(text: "", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .gray)
+    lazy var productPriceLabel = UILabel(text: "", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .label)
     
     lazy var productInstockLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .caption1))
     
@@ -31,7 +31,7 @@ class ProductListCell: UICollectionViewCell {
         cosmosView.settings.starMargin = 3
         cosmosView.settings.fillMode = .precise
         cosmosView.settings.textMargin = 5
-        cosmosView.settings.textColor = .blue
+        cosmosView.settings.textColor = .label
         
         return cosmosView
     }()
