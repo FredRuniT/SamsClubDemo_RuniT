@@ -3,24 +3,20 @@ PODS:
   - SDWebImage (5.2.3):
     - SDWebImage/Core (= 5.2.3)
   - SDWebImage/Core (5.2.3)
-  - SwiftSoup (2.2.1)
 
 DEPENDENCIES:
   - Cosmos
   - SDWebImage
-  - SwiftSoup
 
 SPEC REPOS:
   trunk:
     - Cosmos
     - SDWebImage
-    - SwiftSoup
 
 SPEC CHECKSUMS:
   Cosmos: b47fddf2102bb48580cd3025d9ce0a5c658a65da
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
-  SwiftSoup: a91d3c96ecb6f8f13005552ef60f9075aae4a7f3
 
-PODFILE CHECKSUM: 39adaa71d8bfeae7b9c02c72962bf9def8352da6
+PODFILE CHECKSUM: 991665469e0992e97c4db198ef977b3aea0d7541
 
 COCOAPODS: 1.8.3
