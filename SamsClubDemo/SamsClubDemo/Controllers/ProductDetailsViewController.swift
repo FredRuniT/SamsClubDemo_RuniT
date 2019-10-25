@@ -1,14 +1,6 @@
-//
-//  ProductDetailsViewController.swift
-//  SamsClubDemo
-//
-//  Created by Fredrick Burns on 10/24/19.
-//  Copyright © 2019 Fredrick Burns. All rights reserved.
-//
-
 import UIKit
 import SDWebImage
-import SwiftSoup
+import Cosmos
 
 class ProductDetailsViewController: UIViewController {
     
@@ -23,8 +15,7 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productShortDescription: UILabel!
     @IBOutlet weak var productLongDescriptionLabel: UILabel!
     @IBOutlet weak var showFullDescriptonButton: UIButton!
-
-    @IBOutlet weak var starRatingStackView: UIStackView!
+    @IBOutlet weak var reviewRatings: CosmosView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,54 +27,32 @@ class ProductDetailsViewController: UIViewController {
         self.product = product
         self.update()
     }
-    
+
     func update() {
         guard let product = self.product else {
             return
         }
+        
         let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
         let imageUrl = URL(string: baseUrl + product.productImage)
         self.productImageView?.sd_setImage(with: imageUrl?.absoluteURL, completed: nil)
         
+        setUpReviewUi()
         productBrandLabel.text = product.productName?.components(separatedBy: " ").first
         productNameLabel.attributedText = product.productName?.htmlToAttributedString
         productPriceLabel.text = product.price
-        productRatingCountLabel.text = "\(product.reviewCount ?? 0)"
         productImageView.sd_setImage(with: imageUrl, completed: nil)
         productLongDescriptionLabel.attributedText = product.longDescription?.htmlToAttributedString
         productShortDescription.attributedText = product.shortDescription?.htmlToAttributedString
-        
-        var arrangedSubviews = [UIView]()
-        
-        (0..<5).forEach({ (_) in
-            let imageView = UIImageView(image: #imageLiteral(resourceName: "star"))
-            imageView.constrainWidth(constant: 24)
-            imageView.constrainHeight(constant: 24)
-            arrangedSubviews.append(imageView)
-        })
-        arrangedSubviews.append(UIView())
-        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
-        self.starRatingStackView.addSubview(stackView)
-        
-        for (index, view) in starRatingStackView.arrangedSubviews.enumerated() {
-            if product.reviewCount == 0 {
-                starRatingStackView.isHidden = true
-            }
-            view.alpha = index >= product.reviewCount ?? 0 ? 0 : 1
-        }
-        
-        if product.inStock ?? false {
-            productInstockLabel.text = "In Stock"
-        } else {
-            productInstockLabel.text = "Out of Stock"
-            productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
-        }
-        if product.reviewCount == 0 {
-            for view in [starRatingStackView, productRatingCountLabel] {
-                view?.isHidden = true
-            }
-        }
-        view.addSubview(starRatingStackView)
+        productInstockLabel.text = product.inStock! ? "In Stock" :"Out of Stock"
+        setUpReviewUi()
+    }
+    
+    fileprivate func setUpReviewUi() {
+        reviewRatings.settings.updateOnTouch = false
+        reviewRatings.settings.totalStars = 5
+        reviewRatings.rating = Double(product?.reviewRating ?? 0.0)
+        reviewRatings.text = "\(product?.reviewCount ?? 0)"
     }
     
     @IBAction func showFullDecription ( _sender: UIButton) {

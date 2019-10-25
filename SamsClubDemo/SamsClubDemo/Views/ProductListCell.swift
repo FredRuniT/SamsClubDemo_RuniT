@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Cosmos
 
 class ProductListCell: UICollectionViewCell {
     
@@ -22,21 +23,19 @@ class ProductListCell: UICollectionViewCell {
     lazy var productInstockLabel = UILabel(text: "In Stock", font: .preferredFont(forTextStyle: .caption1))
     
     lazy var productRatingLabel = UILabel(text: "Rating", font: .preferredFont(forTextStyle: .caption1))
-    
-    lazy var starRatingStackView: UIStackView = {
+    lazy var cosmosView: CosmosView = {
+        var cosmosView = CosmosView()
+        cosmosView.settings.updateOnTouch = false
+        cosmosView.settings.totalStars = 5
+        cosmosView.settings.starSize = 24
+        cosmosView.settings.starMargin = 3
+        cosmosView.settings.fillMode = .precise
+        cosmosView.settings.textMargin = 5
+        cosmosView.settings.textColor = .blue
         
-        var arrangedSubviews = [UIView]()
-        (0..<5).forEach({ (_) in
-            let imageView = UIImageView(image: #imageLiteral(resourceName: "star"))
-            imageView.constrainWidth(constant: 24)
-            imageView.constrainHeight(constant: 24)
-            arrangedSubviews.append(imageView)
-        })
-        arrangedSubviews.append(UIView())
-        
-        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
-        return stackView
+        return cosmosView
     }()
+    
     
     lazy var viewProductButton: UIButton = {
         let viewProductButton = UIButton(type: .system)
@@ -50,10 +49,12 @@ class ProductListCell: UICollectionViewCell {
         return viewProductButton
     }()
     
+  
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, starRatingStackView,productPriceLabel, productInstockLabel])
+        let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, cosmosView, productPriceLabel, productInstockLabel])
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 5
         

@@ -30,38 +30,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sony" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGK-9N-InG">
-                                <rect key="frame" x="20" y="64" width="28.5" height="14.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <rect key="frame" x="20" y="64" width="36.5" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <color key="textColor" red="0.0" green="0.41176470590000003" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pmu-1X-HGh">
-                                <rect key="frame" x="363" y="64" width="31" height="14.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mB-bb-l00">
-                                <rect key="frame" x="20" y="78" width="374" height="316"/>
+                                <rect key="frame" x="20" y="83.5" width="374" height="316"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="316" id="dC1-8B-88O"/>
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White Glove Delivery Included" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B74-AO-lji">
-                                <rect key="frame" x="20" y="88.5" width="374" height="19.5"/>
+                                <rect key="frame" x="20" y="93.5" width="374" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-SH-JiA">
-                                <rect key="frame" x="202.5" y="64" width="160.5" height="19.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160.5" id="5LA-ti-y9C"/>
-                                </constraints>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3Xt-8k-WNj">
-                                <rect key="frame" x="20" y="364" width="374" height="120"/>
+                                <rect key="frame" x="20" y="369.5" width="374" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xy0-fY-cFT">
                                         <rect key="frame" x="0.0" y="0.0" width="199.5" height="120"/>
@@ -107,26 +95,50 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ex4-LQ-mPM" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="290" y="64" width="104" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.0" green="0.41176470590000003" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textMargin">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="B74-AO-lji" firstAttribute="width" secondItem="5mB-bb-l00" secondAttribute="width" id="2pv-oS-Rjg"/>
-                            <constraint firstItem="Pmu-1X-HGh" firstAttribute="leading" secondItem="4dB-SH-JiA" secondAttribute="trailing" id="3qP-MI-WCd"/>
+                            <constraint firstItem="ex4-LQ-mPM" firstAttribute="centerY" secondItem="HGK-9N-InG" secondAttribute="centerY" id="5YS-FG-S8l"/>
+                            <constraint firstItem="szr-e5-ZyL" firstAttribute="trailing" secondItem="ex4-LQ-mPM" secondAttribute="trailing" constant="20" id="8ou-CP-Con"/>
                             <constraint firstItem="3Xt-8k-WNj" firstAttribute="top" secondItem="5mB-bb-l00" secondAttribute="bottom" constant="-30" id="Bbx-EN-lbB"/>
-                            <constraint firstItem="B74-AO-lji" firstAttribute="top" secondItem="HGK-9N-InG" secondAttribute="bottom" constant="10" id="NcQ-Om-ONz"/>
-                            <constraint firstItem="szr-e5-ZyL" firstAttribute="trailing" secondItem="Pmu-1X-HGh" secondAttribute="trailing" constant="20" id="T1b-vY-a97"/>
                             <constraint firstItem="B74-AO-lji" firstAttribute="leading" secondItem="szr-e5-ZyL" secondAttribute="leading" constant="20" id="Tmb-7G-2ls"/>
                             <constraint firstItem="5mB-bb-l00" firstAttribute="leading" secondItem="szr-e5-ZyL" secondAttribute="leading" constant="20" id="VQJ-ya-y6A"/>
                             <constraint firstItem="HGK-9N-InG" firstAttribute="top" secondItem="szr-e5-ZyL" secondAttribute="top" constant="20" id="Vvy-dC-WZU"/>
                             <constraint firstItem="5mB-bb-l00" firstAttribute="top" secondItem="B74-AO-lji" secondAttribute="bottom" constant="-30" id="Yxs-qM-v0x"/>
                             <constraint firstItem="szr-e5-ZyL" firstAttribute="trailing" secondItem="B74-AO-lji" secondAttribute="trailing" constant="20" id="aA6-HB-t90"/>
-                            <constraint firstItem="4dB-SH-JiA" firstAttribute="top" secondItem="szr-e5-ZyL" secondAttribute="top" constant="20" id="fPi-M3-8NH"/>
                             <constraint firstItem="HGK-9N-InG" firstAttribute="leading" secondItem="szr-e5-ZyL" secondAttribute="leading" constant="20" id="frf-IP-4Ja"/>
+                            <constraint firstItem="B74-AO-lji" firstAttribute="top" secondItem="ex4-LQ-mPM" secondAttribute="bottom" constant="9.5" id="hVf-4g-pIV"/>
+                            <constraint firstItem="5mB-bb-l00" firstAttribute="top" secondItem="HGK-9N-InG" secondAttribute="bottom" constant="-0.5" id="hp4-fM-afb"/>
                             <constraint firstItem="3Xt-8k-WNj" firstAttribute="leading" secondItem="szr-e5-ZyL" secondAttribute="leading" constant="20" id="ql7-Nt-NBW"/>
-                            <constraint firstItem="4dB-SH-JiA" firstAttribute="height" secondItem="Pmu-1X-HGh" secondAttribute="height" constant="5" id="sJ1-Nk-o4X"/>
+                            <constraint firstItem="ex4-LQ-mPM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HGK-9N-InG" secondAttribute="trailing" priority="250" constant="10" id="raC-Q0-d1p"/>
                             <constraint firstItem="szr-e5-ZyL" firstAttribute="trailing" secondItem="3Xt-8k-WNj" secondAttribute="trailing" constant="20" id="u70-zb-khf"/>
-                            <constraint firstItem="Pmu-1X-HGh" firstAttribute="top" secondItem="szr-e5-ZyL" secondAttribute="top" constant="20" id="vo4-Zm-aW8"/>
                             <constraint firstItem="szr-e5-ZyL" firstAttribute="trailing" secondItem="5mB-bb-l00" secondAttribute="trailing" constant="20" id="xyl-h2-EGv"/>
+                            <constraint firstItem="ex4-LQ-mPM" firstAttribute="height" secondItem="HGK-9N-InG" secondAttribute="height" id="yDY-D2-Pyu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="szr-e5-ZyL"/>
                     </view>
@@ -138,10 +150,9 @@
                         <outlet property="productLongDescriptionLabel" destination="zL2-RW-fWS" id="7ym-Ne-3mv"/>
                         <outlet property="productNameLabel" destination="B74-AO-lji" id="VHI-ya-ano"/>
                         <outlet property="productPriceLabel" destination="1qE-Ce-Aq0" id="0Ms-Xa-jI1"/>
-                        <outlet property="productRatingCountLabel" destination="Pmu-1X-HGh" id="dQ2-Mg-fSt"/>
                         <outlet property="productShortDescription" destination="7nB-9k-Dxr" id="zxt-RY-RRz"/>
+                        <outlet property="reviewRatings" destination="ex4-LQ-mPM" id="XDp-69-9Ev"/>
                         <outlet property="showFullDescriptonButton" destination="eSL-xm-iRN" id="4b3-WH-awH"/>
-                        <outlet property="starRatingStackView" destination="4dB-SH-JiA" id="LSd-D6-izY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hzz-L8-KHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

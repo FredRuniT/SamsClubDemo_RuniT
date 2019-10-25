@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Cosmos
 
 fileprivate let reuseIdentifier = "productlistcell"
 fileprivate let footerID = "loadingfooterID"
@@ -19,6 +20,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     fileprivate var inventoryProducts = [Products]()
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
+    
     var productPageNumber = 1
     
     override func viewDidLoad() {
@@ -101,18 +103,15 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         cell.productNameLabel.text = productResult.productName
         cell.productPriceLabel.text = productResult.price
         cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
+        cell.cosmosView.text = "\(productResult.reviewCount ?? 0)"
+        
+        
         
         if productResult.inStock ?? false {
             cell.productInstockLabel.text = "In Stock"
         } else {
             cell.productInstockLabel.text = "Out of Stock"
-        }
-        
-        for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
-            if productResult.reviewCount == 0 {
-                cell.starRatingStackView.isHidden = true
-            }
-            view.alpha = index >= productResult.reviewCount ?? 0 ? 0 : 1
         }
         
         if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
@@ -149,6 +148,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productInventory = inventoryResults?.products[indexPath.item]
+        print(inventoryResults?.products[indexPath.item])
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
         detailsVC.product = productInventory
@@ -175,9 +175,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
             cell.productInstockLabel.text = "Out of Stock"
             cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
         }
-        for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
-            view.alpha = index >= productResult.reviewCount ?? 0 ? 0 : 1
-        }
+        cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
+        cell.cosmosView.text = "\(productResult.reviewCount ?? 0)"
         cell.layoutIfNeeded()
         let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
         
