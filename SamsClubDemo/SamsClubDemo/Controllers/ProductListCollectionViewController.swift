@@ -22,13 +22,13 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
-   
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.fetchData()
         
-
+        
         collectionView.backgroundColor = .systemBackground
         
         // Register cell classes
@@ -116,7 +116,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         cell.backgroundColor = .secondarySystemBackground
         cell.layer.cornerRadius = 5
         
-        //MARK - Pagination 
+        //MARK: - Pagination Implementation
         if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
             isPaginating = true
             serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15) { (result: Result<Inventory, APIServiceError>) in
@@ -158,11 +158,29 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let collectionViewSize = collectionView.frame.size.width
+        //TODO: REFactor Out
+        let productResult = inventoryProducts[indexPath.row]
+        let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 150))
         
-        if UIDevice().userInterfaceIdiom == .pad {
-            return CGSize(width: collectionViewSize / 2, height: 140)
+        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+        let imageUrl = URL(string: baseUrl + productResult.productImage)
+        
+        cell.productNameLabel.text = productResult.productName
+        cell.productPriceLabel.text = productResult.price
+        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        
+        if productResult.inStock ?? false {
+            cell.productInstockLabel.text = "In Stock"
+        } else {
+            cell.productInstockLabel.text = "Out of Stock"
+            cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
         }
-        return CGSize(width: collectionViewSize, height: 140)
+        cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
+        cell.cosmosView.text = "\(productResult.reviewCount ?? 0)"
+        cell.layoutIfNeeded()
+        let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
+        
+        return .init(width: view.frame.width / 2, height: estimatedSize.height)
+        
     }
 }

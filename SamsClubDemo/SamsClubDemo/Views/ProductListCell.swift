@@ -83,8 +83,8 @@ class ProductListCell: UICollectionViewCell {
         productStackView.alignment = .center
         
         addSubview(productStackView)
-        
-        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 20, right: 10))
+        productStackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 10, left: 20, bottom: 20, right: 20))
+        //productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 20, right: 10))
     }
     
     override init(frame: CGRect) {

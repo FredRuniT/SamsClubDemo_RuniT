@@ -18,7 +18,6 @@ class SavedItemsCollectionViewController: UICollectionViewController {
         collectionView.backgroundColor = .white
         
         // Register cell classes
-        self.collectionView!.register(SavedItemsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
     }

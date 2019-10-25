@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ProductListViewModel: UIViewController {
-
+    
     lazy var clintErorrImageVIew: UIImageView = {
         let errorImageView = UIImageView()
         errorImageView.fillSuperview()
@@ -28,12 +28,12 @@ class ProductListViewModel: UIViewController {
     }()
     
     lazy var poorConnectionImageView: UIImageView = {
-           let poorConnectionImageView = UIImageView()
-           poorConnectionImageView.fillSuperview()
-           poorConnectionImageView.contentMode = .scaleAspectFit
-           poorConnectionImageView.clipsToBounds = true
-           return poorConnectionImageView
-       }()
+        let poorConnectionImageView = UIImageView()
+        poorConnectionImageView.fillSuperview()
+        poorConnectionImageView.contentMode = .scaleAspectFit
+        poorConnectionImageView.clipsToBounds = true
+        return poorConnectionImageView
+    }()
     
     override func viewDidLoad() {
         
@@ -42,5 +42,5 @@ class ProductListViewModel: UIViewController {
         self.serverErorrImageVIew.image = UIImage(named: "itsnotYouItsMe.jpeg")
         self.poorConnectionImageView.image = UIImage(named: "no_internet.jpg")
     }
-
+    
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK - Possible API Service Errors
+//MARK: - Possible API Service Errors
 public enum APIServiceError: Error {
     case apiError
     case serverError
@@ -17,7 +17,7 @@ public enum APIServiceError: Error {
     case decodeError
 }
 
-//MARK - Inventory
+//MARK: - Inventory
 struct Inventory: Decodable {
     let products: [Products]
     let totalProducts: Int
