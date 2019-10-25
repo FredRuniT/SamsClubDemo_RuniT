@@ -30,11 +30,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Yj-3J-gic">
-                                <rect key="frame" x="20" y="111.66666666666669" width="374" height="345"/>
+                                <rect key="frame" x="20" y="116.66666666666669" width="374" height="345"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSv-KJ-Web">
-                                <rect key="frame" x="20" y="456.66666666666674" width="374" height="405.33333333333326"/>
+                                <rect key="frame" x="20" y="471.66666666666674" width="374" height="390.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-k1-uzH">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
@@ -48,7 +48,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Stock" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6D-L8-ICP">
-                                                        <rect key="frame" x="0.0" y="45.666666666666629" width="271.66666666666669" height="13.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="45.666666666666686" width="271.66666666666669" height="13.333333333333336"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -151,7 +151,7 @@
                             <constraint firstItem="lSv-KJ-Web" firstAttribute="leading" secondItem="3Yj-3J-gic" secondAttribute="trailing" id="6Y0-9N-JjS"/>
                             <constraint firstItem="lSv-KJ-Web" firstAttribute="trailing" secondItem="g32-Ye-ARm" secondAttribute="trailing" id="9Rh-4o-ITI"/>
                             <constraint firstItem="lSv-KJ-Web" firstAttribute="bottom" secondItem="g32-Ye-ARm" secondAttribute="bottom" id="AsU-yu-gts"/>
-                            <constraint firstItem="3Yj-3J-gic" firstAttribute="top" secondItem="Orh-L3-Qe0" secondAttribute="bottom" id="GVA-Ym-cXf"/>
+                            <constraint firstItem="3Yj-3J-gic" firstAttribute="top" secondItem="Orh-L3-Qe0" secondAttribute="bottom" constant="5" id="GVA-Ym-cXf"/>
                             <constraint firstItem="lSv-KJ-Web" firstAttribute="bottom" secondItem="g32-Ye-ARm" secondAttribute="bottom" id="L9Q-LM-oOp"/>
                             <constraint firstItem="g32-Ye-ARm" firstAttribute="trailing" secondItem="Orh-L3-Qe0" secondAttribute="trailing" constant="20" id="Tyh-vA-C7Z"/>
                             <constraint firstItem="3Yj-3J-gic" firstAttribute="height" secondItem="8eY-yj-ncP" secondAttribute="height" multiplier="0.385" id="Uzi-oY-gZf"/>
@@ -165,7 +165,7 @@
                             <constraint firstItem="lSv-KJ-Web" firstAttribute="leading" secondItem="g32-Ye-ARm" secondAttribute="leading" constant="20" id="gKu-Yp-UNY"/>
                             <constraint firstItem="Orh-L3-Qe0" firstAttribute="top" secondItem="g32-Ye-ARm" secondAttribute="top" constant="20" id="kun-HF-KmO"/>
                             <constraint firstItem="3Yj-3J-gic" firstAttribute="leading" secondItem="g32-Ye-ARm" secondAttribute="leading" constant="20" id="nNr-4U-xLu"/>
-                            <constraint firstItem="lSv-KJ-Web" firstAttribute="top" secondItem="3Yj-3J-gic" secondAttribute="bottom" id="v88-W7-1UI"/>
+                            <constraint firstItem="lSv-KJ-Web" firstAttribute="top" secondItem="3Yj-3J-gic" secondAttribute="bottom" constant="10" id="v88-W7-1UI"/>
                             <constraint firstItem="Orh-L3-Qe0" firstAttribute="leading" secondItem="g32-Ye-ARm" secondAttribute="leading" constant="20" id="vcm-E4-FUo"/>
                             <constraint firstItem="lSv-KJ-Web" firstAttribute="top" secondItem="g32-Ye-ARm" secondAttribute="top" id="yyH-cQ-ids"/>
                         </constraints>

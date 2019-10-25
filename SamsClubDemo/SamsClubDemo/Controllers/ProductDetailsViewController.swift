@@ -31,27 +31,32 @@ class ProductDetailsViewController: UIViewController {
         guard let product = self.product else {
             return
         }
+        setUpReviewUi()
         
         let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
         let imageUrl = URL(string: baseUrl + product.productImage)
-        self.productImageView?.sd_setImage(with: imageUrl?.absoluteURL, completed: nil)
+        productImageView.sd_setImage(with: imageUrl, completed: nil)
+        productImageView.layer.cornerRadius = 10
+        productImageView.clipsToBounds = true
         
-        setUpReviewUi()
+       
         productBrandLabel.text = product.productName?.components(separatedBy: " ").first
         productNameLabel.attributedText = product.productName?.htmlToAttributedString
-        productPriceLabel.text = product.price
-        productNameLabel.font = .preferredFont(forTextStyle: .headline)
-        productImageView.sd_setImage(with: imageUrl, completed: nil)
         productLongDescriptionLabel.attributedText = product.longDescription?.htmlToAttributedString
-        productLongDescriptionLabel.textColor = .label
-        productLongDescriptionLabel.font = .preferredFont(forTextStyle: .body)
         productShortDescription.attributedText = product.shortDescription?.htmlToAttributedString
+        productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
+        productPriceLabel.text = product.price
+
         productShortDescription.textColor = .label
+        productLongDescriptionLabel.textColor = .label
+        productNameLabel.textColor = .label
+        
         productShortDescription.font = .preferredFont(forTextStyle: .body)
         productPriceLabel.font = .preferredFont(forTextStyle: .headline)
         productInstockLabel.font = .preferredFont(forTextStyle: .callout)
-        productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
-        setUpReviewUi()
+        productNameLabel.font = .preferredFont(forTextStyle: .headline)
+        productLongDescriptionLabel.font = .preferredFont(forTextStyle: .body)
+
     }
     
     fileprivate func setUpReviewUi() {

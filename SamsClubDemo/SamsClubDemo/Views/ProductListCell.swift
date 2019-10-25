@@ -67,11 +67,10 @@ class ProductListCell: UICollectionViewCell {
         self.productPriceLabel.text = product.price
         self.productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         
-        productNameLabel.attributedText = product.productName?.htmlToAttributedString
-        productPriceLabel.text = product.price
-        productPriceLabel.font = .preferredFont(forTextStyle: .headline)
+        productPriceLabel.textColor = .label
+        productPriceLabel.font = .preferredFont(forTextStyle: .callout)
         productNameLabel.font = .preferredFont(forTextStyle: .callout)
-        productInstockLabel.font = .preferredFont(forTextStyle: .callout)
+        productInstockLabel.font = .preferredFont(forTextStyle: .footnote)
         
         let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, cosmosView, productPriceLabel, productInstockLabel])
         labelsStackView.axis = .vertical
@@ -85,7 +84,7 @@ class ProductListCell: UICollectionViewCell {
         
         addSubview(productStackView)
         
-        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 20))
+        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 20, right: 20))
     }
     
     override init(frame: CGRect) {

@@ -132,8 +132,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let productInventory = inventoryResults?.products[indexPath.item]
-        print(inventoryResults?.products[indexPath.item])
+        let productInventory = inventoryProducts[indexPath.item]
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
         detailsVC.product = productInventory
@@ -145,8 +145,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         let collectionViewSize = collectionView.frame.size.width
         
         if UIDevice().userInterfaceIdiom == .pad {
-            return CGSize(width: collectionViewSize / 2, height: 120)
+            return CGSize(width: collectionViewSize / 2, height: 140)
         }
-        return CGSize(width: collectionViewSize, height: 120)
+        return CGSize(width: collectionViewSize, height: 140)
     }
 }
