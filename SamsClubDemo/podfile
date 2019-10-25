@@ -8,5 +8,7 @@ target 'SamsClubDemo' do
   # Pods for SamsClubDemo
   pod 'SDWebImage'
   pod 'SwiftSoup'
+  pod 'Cosmos'
+
 
 end
