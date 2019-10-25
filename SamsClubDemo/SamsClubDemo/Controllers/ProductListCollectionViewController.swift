@@ -28,9 +28,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         super.viewDidLoad()
         self.fetchData()
         
-        //TODO: Move to View Model
+
         collectionView.backgroundColor = .systemBackground
-        
         
         // Register cell classes
         self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -117,8 +116,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         cell.backgroundColor = .secondarySystemBackground
         cell.layer.cornerRadius = 5
         
+        //MARK - Pagination 
         if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
-            //TODO: Mark Up
             isPaginating = true
             serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15) { (result: Result<Inventory, APIServiceError>) in
                 switch result {

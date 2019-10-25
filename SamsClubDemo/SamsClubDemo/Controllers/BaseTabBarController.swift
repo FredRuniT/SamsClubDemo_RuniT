@@ -19,7 +19,7 @@ class BaseTabBarController: UITabBarController {
         ]
     }
     
-    //MARK: A function that creates a generic navigation controller for reuse.
+    //MARK - A function that creates a generic navigation controller for reuse.
     fileprivate func createNavigationController(viewController: UIViewController, title: String, imageName: UIImage!) -> UIViewController {
         
         let navigationController = UINavigationController(rootViewController: viewController)
