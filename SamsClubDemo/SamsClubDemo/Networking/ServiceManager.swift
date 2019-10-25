@@ -10,28 +10,30 @@ import Foundation
 
 
 class ServiceManager {
-    
+        
     //MARK: Singleton
+    //TODO: Comment
     static let shared = ServiceManager()
     
-    func fetchProductInventory(urlString: String, completion: @escaping (Result<Inventory, Error>) -> ()) {
+    func fetchInventoryData<T: Decodable>(urlString: String, completion: @escaping (Result<T, APIServiceError>) -> ()) {
         
-        
-        //let urlString = "https://mobile-tha-server.firebaseapp.com/walmartproducts/1/15"
         guard let apiUrl = URL(string: urlString) else {return}
         
-        URLSession.shared.dataTask(with: apiUrl) { (data, response, err) in
-            if let err = err {
-                completion(.failure(err))
-                return
-            }
-            do {
-                guard let data = data else {return}
-                let inventory = try JSONDecoder().decode(Inventory.self, from: data)
-                completion(.success(inventory))
-                
-            } catch let jsonError {
-                completion(.failure(jsonError))
+        URLSession.shared.dataTask(with: apiUrl) { (result) in
+            switch result {
+            case .success(let (response, data)):
+                guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                do {
+                    let inventory = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(inventory))
+                } catch {
+                    completion(.failure(.decodeError))
+                }
+            case .failure( _):
+                completion(.failure(.apiError))
             }
         }.resume()
     }

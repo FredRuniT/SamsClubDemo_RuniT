@@ -8,6 +8,15 @@
 
 import Foundation
 
+//MARK - Possible API Service Errors
+public enum APIServiceError: Error {
+    case apiError
+    case invalidEndpoint
+    case invalidResponse
+    case noData
+    case decodeError
+}
+
 //MARK - Inventory
 struct Inventory: Decodable {
     let products: [Products]

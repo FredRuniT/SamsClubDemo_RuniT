@@ -50,7 +50,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     private func fetchData() {
-        serviceManager.fetchProductInventory(urlString: "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (result) in
+        serviceManager.fetchInventoryData(urlString:  "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (result: Result<Inventory, APIServiceError>) in
+            
             switch result {
                 
             case .success(let inventoryItems):
@@ -117,14 +118,14 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
             //TODO: Mark Up
             isPaginating = true
-            serviceManager.fetchProductInventory(urlString: "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (results) in
-                switch results {
+            serviceManager.fetchInventoryData(urlString:  "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (result: Result<Inventory, APIServiceError>) in
+                switch result {
                     
                 case .success(let inventoryItems):
                     if inventoryItems.products.count == 0 {
                         self.isDonePaginating = true
                     }
-    
+                    
                     sleep(2)
                     self.inventoryProducts += inventoryItems.products
                     
