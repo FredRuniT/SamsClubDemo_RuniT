@@ -18,16 +18,16 @@ class ProductDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        update()
+        configureUIElements()
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     func configure(withProduct product: Products) {
         self.product = product
-        self.update()
+        self.configureUIElements()
     }
     
-    func update() {
+    func configureUIElements() {
         guard let product = self.product else {
             return
         }
@@ -40,12 +40,16 @@ class ProductDetailsViewController: UIViewController {
         productBrandLabel.text = product.productName?.components(separatedBy: " ").first
         productNameLabel.attributedText = product.productName?.htmlToAttributedString
         productPriceLabel.text = product.price
+        productNameLabel.font = .preferredFont(forTextStyle: .headline)
         productImageView.sd_setImage(with: imageUrl, completed: nil)
         productLongDescriptionLabel.attributedText = product.longDescription?.htmlToAttributedString
         productLongDescriptionLabel.textColor = .label
-        
+        productLongDescriptionLabel.font = .preferredFont(forTextStyle: .body)
         productShortDescription.attributedText = product.shortDescription?.htmlToAttributedString
         productShortDescription.textColor = .label
+        productShortDescription.font = .preferredFont(forTextStyle: .body)
+        productPriceLabel.font = .preferredFont(forTextStyle: .headline)
+        productInstockLabel.font = .preferredFont(forTextStyle: .callout)
         productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         setUpReviewUi()
     }
@@ -55,12 +59,12 @@ class ProductDetailsViewController: UIViewController {
         reviewRatings.settings.totalStars = 5
         reviewRatings.rating = Double(product?.reviewRating ?? 0.0)
         reviewRatings.text = "\(product?.reviewCount ?? 0)"
+        reviewRatings.settings.textFont = .preferredFont(forTextStyle: .callout)
     }
     
     @IBAction func showFullDecription ( _sender: UIButton) {
         UIView.animate(withDuration: 0.8) {
             self.productLongDescriptionLabel.isHidden.toggle()
-            self.productShortDescription.isHidden.toggle()
             if self.productLongDescriptionLabel.isHidden {
                 self.showFullDescriptonButton.setTitle("Show Full Product Description", for: .normal)
                 self.productLongDescriptionLabel.alpha = 0
@@ -68,7 +72,6 @@ class ProductDetailsViewController: UIViewController {
             } else {
                 self.showFullDescriptonButton.setTitle("Hide Product Description", for: .normal)
                 self.productLongDescriptionLabel.alpha = 1
-                self.productShortDescription.alpha = 0
             }
         }
     }

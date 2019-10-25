@@ -67,6 +67,12 @@ class ProductListCell: UICollectionViewCell {
         self.productPriceLabel.text = product.price
         self.productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         
+        productNameLabel.attributedText = product.productName?.htmlToAttributedString
+        productPriceLabel.text = product.price
+        productPriceLabel.font = .preferredFont(forTextStyle: .headline)
+        productNameLabel.font = .preferredFont(forTextStyle: .callout)
+        productInstockLabel.font = .preferredFont(forTextStyle: .callout)
+        
         let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, cosmosView, productPriceLabel, productInstockLabel])
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 5
