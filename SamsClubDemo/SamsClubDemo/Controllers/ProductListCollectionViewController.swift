@@ -51,7 +51,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     private func fetchData() {
-        serviceManager.fetchInventoryData(urlString:  "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (result: Result<Inventory, APIServiceError>) in
+        serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15)
+        { (result: Result<Inventory, APIServiceError>) in
             
             switch result {
                 
@@ -92,23 +93,16 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
-        //TODO: REFactor Out
         
         let productResult = inventoryProducts[indexPath.row]
         
-        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
-        let imageUrl = URL(string: baseUrl + productResult.productImage)
-        
-        cell.productNameLabel.text = productResult.productName
-        cell.productPriceLabel.text = productResult.price
-        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        cell.configure(withProductResult: productResult)
         cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
-        cell.productInstockLabel.text = productResult.inStock ?? false ? "In Stock" :"Out of Stock"
         
         if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
             //TODO: Mark Up
             isPaginating = true
-            serviceManager.fetchInventoryData(urlString:  "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (result: Result<Inventory, APIServiceError>) in
+            serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15) { (result: Result<Inventory, APIServiceError>) in
                 switch result {
                     
                 case .success(let inventoryItems):

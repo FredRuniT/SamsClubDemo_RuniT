@@ -12,17 +12,16 @@ import Cosmos
 
 class ProductListCell: UICollectionViewCell {
     
+    var product: Products?
     let productDetailsVC = ProductDetailsViewController()
     
     lazy var productImageView = UIImageView(cornerRadius: 0)
     
     lazy var productNameLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
     
-    lazy var productPriceLabel = UILabel(text: "$500", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .gray)
+    lazy var productPriceLabel = UILabel(text: "", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .gray)
     
-    lazy var productInstockLabel = UILabel(text: "In Stock", font: .preferredFont(forTextStyle: .caption1))
-    
-    lazy var productRatingLabel = UILabel(text: "Rating", font: .preferredFont(forTextStyle: .caption1))
+    lazy var productInstockLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .caption1))
     
     lazy var cosmosView: CosmosView = {
         var cosmosView = CosmosView()
@@ -37,35 +36,55 @@ class ProductListCell: UICollectionViewCell {
         return cosmosView
     }()
     
-    lazy var viewProductButton: UIButton = {
-        let viewProductButton = UIButton(type: .system)
-        viewProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
-        viewProductButton.layer.cornerRadius = 10
-        viewProductButton.constrainWidth(constant: 80)
-        viewProductButton.constrainHeight(constant: 30)
-        return viewProductButton
+    lazy var viewProductImage: UIImageView = {
+        let viewProductImage = UIImageView()
+        viewProductImage.image = (UIImage(systemName: "cart.badge.plus"))
+        viewProductImage.contentMode = .scaleAspectFit
+        viewProductImage.constrainWidth(constant: 30)
+        viewProductImage.constrainHeight(constant: 30)
+        return viewProductImage
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    func configure(withProductResult product: Products) {
+        self.product = product
+        configureUI()
+    }
+    
+    func configureUI() {
+        guard let product = self.product else {
+            return
+        }
         
-        productImageView.constrainWidth(constant: 80)
-        productImageView.constrainHeight(constant: 60)
+        let baseUrl = ServiceManager.shared.getbaseUrlString(imagId: product.productImage)
+        let imageUrl = URL(string: baseUrl + product.productImage)
+        
+        self.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        
+        self.productImageView.constrainWidth(constant: 80)
+        self.productImageView.constrainHeight(constant: 60)
+        
+        self.productNameLabel.text = product.productName
+        self.productPriceLabel.text = product.price
+        self.productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         
         let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, cosmosView, productPriceLabel, productInstockLabel])
         labelsStackView.axis = .vertical
         labelsStackView.spacing = 5
         
-        let viewProductButtonSV = UIStackView(arrangedSubviews: [viewProductButton])
+        let cartImageStackView = UIStackView(arrangedSubviews: [viewProductImage])
         
-        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView, viewProductButtonSV])
+        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView, cartImageStackView])
         productStackView.spacing = 10
         productStackView.alignment = .center
         
         addSubview(productStackView)
         
-        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
-        
+        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 20))
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.configureUI()
     }
     
     required init?(coder: NSCoder) {
