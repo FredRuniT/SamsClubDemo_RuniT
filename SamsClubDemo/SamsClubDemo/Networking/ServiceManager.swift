@@ -14,10 +14,10 @@ class ServiceManager {
     //MARK: Singleton
     static let shared = ServiceManager()
     
-     func fetchProductInventory(completion: @escaping (Result<Inventory, Error>) -> ()) {
+    func fetchProductInventory(urlString: String, completion: @escaping (Result<Inventory, Error>) -> ()) {
         
         
-        let urlString = "https://mobile-tha-server.firebaseapp.com/walmartproducts/1/8"
+        //let urlString = "https://mobile-tha-server.firebaseapp.com/walmartproducts/1/15"
         guard let apiUrl = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: apiUrl) { (data, response, err) in

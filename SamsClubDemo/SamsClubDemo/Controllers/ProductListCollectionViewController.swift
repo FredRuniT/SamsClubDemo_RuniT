@@ -15,15 +15,20 @@ fileprivate let footerID = "loadingfooterID"
 class ProductListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate var serviceManager = ServiceManager()
-    fileprivate var inventory: Inventory?
+    fileprivate var inventoryResults: Inventory?
+    fileprivate var inventoryProducts = [Products]()
+    fileprivate var isPaginating = false
+    fileprivate var isDonePaginating = false
+    var productPageNumber = 1
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         self.fetchData()
         
+        //TODO: Move to View Model
         collectionView.backgroundColor = .white
-
+        
         // Register cell classes
         self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -45,12 +50,12 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     private func fetchData() {
-        serviceManager.fetchProductInventory { (result) in
+        serviceManager.fetchProductInventory(urlString: "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (result) in
             switch result {
                 
             case .success(let inventoryItems):
-                self.inventory = inventoryItems
-                
+                self.inventoryResults = inventoryItems
+                self.inventoryProducts = inventoryItems.products
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -62,8 +67,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         }
     }
     
-
-    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let loadingFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerID, for: indexPath)
@@ -71,7 +74,8 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 100)
+        let height: CGFloat = isDonePaginating ? 0 : 100
+        return .init(width: view.frame.width, height: height)
     }
     
     // MARK: UICollectionViewDataSource
@@ -81,44 +85,69 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return inventory?.products.count ?? 0
+        return inventoryProducts.count
     }
-
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
         //TODO: REFactor Out
         
-        if let inventory = self.inventory?.products  {
-            
-             let productResult = inventory[indexPath.row]
-            
-            let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
-            let imageUrl = URL(string: baseUrl + productResult.productImage)
-            
-            cell.productNameLabel.text = productResult.productName
-            cell.productPriceLabel.text = productResult.price
-            cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
-            
-            if productResult.inStock ?? false {
-                cell.productInstockLabel.text = "In Stock"
-            } else {
-                cell.productInstockLabel.text = "Out of Stock"
+        let productResult = inventoryProducts[indexPath.row]
+        
+        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+        let imageUrl = URL(string: baseUrl + productResult.productImage)
+        
+        cell.productNameLabel.text = productResult.productName
+        cell.productPriceLabel.text = productResult.price
+        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        
+        if productResult.inStock ?? false {
+            cell.productInstockLabel.text = "In Stock"
+        } else {
+            cell.productInstockLabel.text = "Out of Stock"
+        }
+        
+        for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
+            if productResult.reviewCount == 0 {
+                cell.starRatingStackView.isHidden = true
             }
-            
-            for (index, view) in cell.starRatingStackView.arrangedSubviews.enumerated() {
-                if productResult.reviewCount == 0 {
-                    cell.starRatingStackView.isHidden = true
+            view.alpha = index >= productResult.reviewCount ?? 0 ? 0 : 1
+        }
+        
+        if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
+            //TODO: Mark Up
+            isPaginating = true
+            serviceManager.fetchProductInventory(urlString: "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(productPageNumber)/15") { (results) in
+                switch results {
+                    
+                case .success(let inventoryItems):
+                    if inventoryItems.products.count == 0 {
+                        self.isDonePaginating = true
+                    }
+    
+                    sleep(2)
+                    self.inventoryProducts += inventoryItems.products
+                    
+                    if (self.inventoryProducts.count > 30) {
+                        self.productPageNumber += 1
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                    self.isPaginating = false
+                    
+                case.failure(let err):
+                    //TODO Show Meaningful Message
+                    print("Failed to fetch products", err)
                 }
-                view.alpha = index >= productResult.reviewCount ?? 0 ? 0 : 1
             }
-            
         }
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let productInventory = inventory?.products[indexPath.item]
+        let productInventory = inventoryResults?.products[indexPath.item]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
         detailsVC.product = productInventory
@@ -127,9 +156,9 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         if let inventory = self.inventory  {
+        
         //TODO: REFactor Out
-        let productResult = inventory.products[indexPath.row]
+        let productResult = inventoryProducts[indexPath.row]
         let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 150))
         
         let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
@@ -139,7 +168,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         cell.productPriceLabel.text = productResult.price
         cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
         
-            if productResult.inStock ?? false {
+        if productResult.inStock ?? false {
             cell.productInstockLabel.text = "In Stock"
         } else {
             cell.productInstockLabel.text = "Out of Stock"
@@ -152,7 +181,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
         
         return .init(width: view.frame.width, height: estimatedSize.height)
-        }
-        return CGSize()
+        
     }
 }
