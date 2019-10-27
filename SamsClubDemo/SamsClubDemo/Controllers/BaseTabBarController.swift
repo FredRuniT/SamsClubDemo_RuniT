@@ -14,7 +14,7 @@ class BaseTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
-            createNavigationController(viewController: ProductListCollectionViewController(), title: "Products", imageName: UIImage(systemName: "square.grid.2x2")),
+            createNavigationController(viewController: MainViewController(), title: "Products", imageName: UIImage(systemName: "square.grid.2x2")),
             createNavigationController(viewController: UIViewController(), title: "Saved Items", imageName: UIImage(systemName: "bookmark"))
         ]
     }

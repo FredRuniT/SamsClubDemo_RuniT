@@ -1,5 +1,5 @@
 //
-//  ProductListCollectionViewController.swift
+//  MainViewController.swift
 //  SamsClubDemo
 //
 //  Created by Fredrick Burns on 10/21/19.
@@ -10,10 +10,10 @@ import UIKit
 import SDWebImage
 import Cosmos
 
-fileprivate let reuseIdentifier = "productlistcell"
+fileprivate let productListCellId = "productListCellId"
 fileprivate let footerID = "loadingfooterID"
 
-class ProductListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     fileprivate var serviceManager = ServiceManager()
     fileprivate var inventoryResults: Inventory?
@@ -27,15 +27,10 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         
         super.viewDidLoad()
         self.fetchData()
-        
-        
-        collectionView.backgroundColor = .systemBackground
-        
-        // Register cell classes
-        self.collectionView!.register(ProductListCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
+    
         //Register Footer
-        collectionView.register(ProductLoadindFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
+        
+        self.topRatedCollectionView.register(ProductLoadindFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,14 +38,6 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.backgroundColor = .systemBackground
         self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func fetchData() {
@@ -63,29 +50,29 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
                 
                 if inventoryItems.statusCode == 400 {
                     DispatchQueue.main.async {
-                        self.collectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
+//                        self.topRatedCollectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
                     }
                     
                 } else if inventoryItems.statusCode == 500 {
-                    self.collectionView.backgroundView = self.productListViewModel.serverErorrImageVIew
+                   // self.topRatedCollectionView.backgroundView = self.serverErorrImageVIew
                 }
                 self.inventoryResults = inventoryItems
                 self.inventoryProducts = inventoryItems.products
                 
                 DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                    self.topRatedCollectionView.reloadData()
                 }
                 
             case.failure(let err):
                 print(err.localizedDescription)
                 DispatchQueue.main.async {
-                    self.collectionView.backgroundView = self.productListViewModel.poorConnectionImageView
+                    //self.topRatedCollectionView.backgroundView = self.poorConnectionImageView
                 }
             }
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let loadingFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerID, for: indexPath)
         return loadingFooter
@@ -97,17 +84,17 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     }
     
     // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return inventoryProducts.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductListCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: productListCellId, for: indexPath) as! ProductListCell
         
         let productResult = inventoryProducts[indexPath.row]
         
@@ -135,7 +122,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
                     }
                     
                     DispatchQueue.main.async {
-                        self.collectionView.reloadData()
+                        self.topRatedCollectionView.reloadData()
                     }
                     self.isPaginating = false
                     
@@ -147,7 +134,7 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productInventory = inventoryProducts[indexPath.item]
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -158,29 +145,11 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //TODO: REFactor Out
-        let productResult = inventoryProducts[indexPath.row]
         let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 150))
-        
-        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
-        let imageUrl = URL(string: baseUrl + productResult.productImage)
-        
-        cell.productNameLabel.text = productResult.productName
-        cell.productPriceLabel.text = productResult.price
-        cell.productImageView.sd_setImage(with: imageUrl, completed: nil)
-        
-        if productResult.inStock ?? false {
-            cell.productInstockLabel.text = "In Stock"
-        } else {
-            cell.productInstockLabel.text = "Out of Stock"
-            cell.productInstockLabel.font = UIFont.italicSystemFont(ofSize: 14)
-        }
-        cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
-        cell.cosmosView.text = "\(productResult.reviewCount ?? 0)"
+    
         cell.layoutIfNeeded()
         let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
         
-        return .init(width: view.frame.width / 2, height: estimatedSize.height)
-        
+        return .init(width: view.frame.width, height: estimatedSize.height)
     }
 }
