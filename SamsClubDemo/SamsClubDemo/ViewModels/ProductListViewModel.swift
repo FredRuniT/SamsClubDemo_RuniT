@@ -11,7 +11,7 @@ import UIKit
 
 class ProductListViewModel: UIViewController {
     
-    @IBOutlet weak var topRatedCollectionView: UICollectionView!
+    @IBOutlet weak var inventoryCollectionView: UICollectionView!
     @IBOutlet weak var loadingErrorImageView: UIImageView!
     var productListFooter = ProductLoadindFooter()
     
@@ -20,8 +20,9 @@ class ProductListViewModel: UIViewController {
         
         super.viewDidLoad()
         
-        loadingErrorImageView.fillSuperview()
-        self.topRatedCollectionView.backgroundColor = .systemBackground
+
+        //loadingErrorImageView.fillSuperview()
+        self.inventoryCollectionView.backgroundColor = .systemBackground
 //        productListFooter.configureLoadingFooter()
         //TODO: Provide Use cases
 //        self.clintErorrImageVIew.image = UIImage(named: "errorImage.jpg")

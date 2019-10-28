@@ -13,7 +13,7 @@
 		F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */; };
 		F61C849A23632CEA0034139F /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C849923632CEA0034139F /* ProductListViewModel.swift */; };
 		F644BA6D236553F200592922 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644BA6C236553F200592922 /* SplashView.swift */; };
-		F644BA6F23658FD100592922 /* TopRatedProductsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F644BA6E23658FD100592922 /* TopRatedProductsView.xib */; };
+		F644BA6F23658FD100592922 /* InventoryListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F644BA6E23658FD100592922 /* InventoryListView.xib */; };
 		F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */; };
 		F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */; };
 		F6727F75235EA9E0005B4A2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F73235EA9E0005B4A2C /* Main.storyboard */; };
@@ -21,9 +21,7 @@
 		F6727F7A235EA9E1005B4A2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F78235EA9E1005B4A2C /* LaunchScreen.storyboard */; };
 		F6727F85235EA9E1005B4A2C /* SamsClubDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F84235EA9E1005B4A2C /* SamsClubDemoTests.swift */; };
 		F6727F90235EA9E2005B4A2C /* SamsClubDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F8F235EA9E2005B4A2C /* SamsClubDemoUITests.swift */; };
-		F6727FA4235EAF31005B4A2C /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */; };
 		F6727FA6235EBABE005B4A2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FA5235EBABE005B4A2C /* MainViewController.swift */; };
-		F6727FA8235EBB17005B4A2C /* SavedItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */; };
 		F6727FAC235EC2CA005B4A2C /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */; };
 		F6727FDE235FFDDA005B4A2C /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FDD235FFDDA005B4A2C /* Products.swift */; };
 		F6727FE4235FFE40005B4A2C /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FE3235FFE40005B4A2C /* ServiceManager.swift */; };
@@ -58,7 +56,7 @@
 		F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductLoadingFoooter.swift; sourceTree = "<group>"; };
 		F61C849923632CEA0034139F /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
 		F644BA6C236553F200592922 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		F644BA6E23658FD100592922 /* TopRatedProductsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopRatedProductsView.xib; sourceTree = "<group>"; };
+		F644BA6E23658FD100592922 /* InventoryListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryListView.xib; sourceTree = "<group>"; };
 		F6727F6A235EA9E0005B4A2C /* SamsClubDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamsClubDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,9 +70,7 @@
 		F6727F8B235EA9E2005B4A2C /* SamsClubDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamsClubDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6727F8F235EA9E2005B4A2C /* SamsClubDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamsClubDemoUITests.swift; sourceTree = "<group>"; };
 		F6727F91235EA9E2005B4A2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		F6727FA5235EBABE005B4A2C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemsCollectionViewController.swift; sourceTree = "<group>"; };
 		F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
 		F6727FDD235FFDDA005B4A2C /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		F6727FE3235FFE40005B4A2C /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
@@ -181,8 +177,6 @@
 			children = (
 				F6727FA5235EBABE005B4A2C /* MainViewController.swift */,
 				F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */,
-				F6727FA3235EAF31005B4A2C /* BaseTabBarController.swift */,
-				F6727FA7235EBB17005B4A2C /* SavedItemsCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -207,10 +201,10 @@
 			isa = PBXGroup;
 			children = (
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
+				F644BA6E23658FD100592922 /* InventoryListView.xib */,
 				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
 				F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */,
 				F644BA6C236553F200592922 /* SplashView.swift */,
-				F644BA6E23658FD100592922 /* TopRatedProductsView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,7 +353,7 @@
 				F6727F7A235EA9E1005B4A2C /* LaunchScreen.storyboard in Resources */,
 				F6727F77235EA9E1005B4A2C /* Assets.xcassets in Resources */,
 				F6727F75235EA9E0005B4A2C /* Main.storyboard in Resources */,
-				F644BA6F23658FD100592922 /* TopRatedProductsView.xib in Resources */,
+				F644BA6F23658FD100592922 /* InventoryListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,10 +424,8 @@
 				F644BA6D236553F200592922 /* SplashView.swift in Sources */,
 				F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */,
 				F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */,
-				F6727FA8235EBB17005B4A2C /* SavedItemsCollectionViewController.swift in Sources */,
 				F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */,
 				F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */,
-				F6727FA4235EAF31005B4A2C /* BaseTabBarController.swift in Sources */,
 				F6727FE4235FFE40005B4A2C /* ServiceManager.swift in Sources */,
 				F6727FEA235FFE64005B4A2C /* UIView+Layout.swift in Sources */,
 				F6727FDE235FFDDA005B4A2C /* Products.swift in Sources */,

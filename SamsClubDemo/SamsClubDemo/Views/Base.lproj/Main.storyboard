@@ -238,14 +238,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itsnotYouItsMe" translatesAutoresizingMaskIntoConstraints="NO" id="fX4-eh-Gqn">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LNM-QK-mgZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="268.66666666666669"/>
+                                <rect key="frame" x="0.0" y="414" width="414" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1O-Tk-jwx">
-                                    <size key="itemSize" width="300" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1O-Tk-jwx">
+                                    <size key="itemSize" width="300" height="120"/>
+                                    <size key="estimatedItemSize" width="300" height="120"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -256,24 +254,26 @@
                                     <outlet property="delegate" destination="h2z-kz-Oii" id="ITL-Is-yzR"/>
                                 </connections>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itsnotYouItsMe" translatesAutoresizingMaskIntoConstraints="NO" id="eVM-Y9-Lhq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="326"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="LNM-QK-mgZ" firstAttribute="trailing" secondItem="ucx-9F-xrE" secondAttribute="trailing" id="2t4-KF-xfl"/>
+                            <constraint firstItem="LNM-QK-mgZ" firstAttribute="top" secondItem="eVM-Y9-Lhq" secondAttribute="bottom" id="5bQ-3N-Voi"/>
                             <constraint firstItem="LNM-QK-mgZ" firstAttribute="leading" secondItem="ucx-9F-xrE" secondAttribute="leading" id="9w7-bR-K98"/>
-                            <constraint firstAttribute="bottom" secondItem="fX4-eh-Gqn" secondAttribute="bottom" id="RJ2-wL-KPi"/>
-                            <constraint firstItem="LNM-QK-mgZ" firstAttribute="top" secondItem="ucx-9F-xrE" secondAttribute="top" id="Ye1-1K-qOD"/>
-                            <constraint firstItem="LNM-QK-mgZ" firstAttribute="height" secondItem="igM-89-hKE" secondAttribute="height" multiplier="0.3" id="awb-P3-idG"/>
-                            <constraint firstItem="fX4-eh-Gqn" firstAttribute="top" secondItem="ucx-9F-xrE" secondAttribute="top" id="fhH-mi-r4s"/>
-                            <constraint firstItem="fX4-eh-Gqn" firstAttribute="leading" secondItem="ucx-9F-xrE" secondAttribute="leading" id="vg7-7Z-BWB"/>
-                            <constraint firstItem="fX4-eh-Gqn" firstAttribute="trailing" secondItem="ucx-9F-xrE" secondAttribute="trailing" id="wwM-x5-ys2"/>
+                            <constraint firstItem="ucx-9F-xrE" firstAttribute="bottom" secondItem="LNM-QK-mgZ" secondAttribute="bottom" id="JCd-AT-RIg"/>
+                            <constraint firstItem="eVM-Y9-Lhq" firstAttribute="trailing" secondItem="ucx-9F-xrE" secondAttribute="trailing" id="LTS-RR-XaK"/>
+                            <constraint firstItem="eVM-Y9-Lhq" firstAttribute="top" secondItem="ucx-9F-xrE" secondAttribute="top" id="MOe-2g-SBU"/>
+                            <constraint firstItem="eVM-Y9-Lhq" firstAttribute="leading" secondItem="ucx-9F-xrE" secondAttribute="leading" id="UwF-gN-za4"/>
+                            <constraint firstItem="LNM-QK-mgZ" firstAttribute="height" secondItem="igM-89-hKE" secondAttribute="height" multiplier="0.5" id="awb-P3-idG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ucx-9F-xrE"/>
                     </view>
                     <navigationItem key="navigationItem" id="E8R-IY-V3z"/>
                     <connections>
-                        <outlet property="loadingErrorImageView" destination="fX4-eh-Gqn" id="Duj-05-toN"/>
-                        <outlet property="topRatedCollectionView" destination="LNM-QK-mgZ" id="2KZ-ig-zxV"/>
+                        <outlet property="inventoryCollectionView" destination="LNM-QK-mgZ" id="Xhj-zW-tPK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oev-QN-Xkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
