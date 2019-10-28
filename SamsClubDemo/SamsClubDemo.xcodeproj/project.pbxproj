@@ -311,13 +311,16 @@
 				TargetAttributes = {
 					F6727F69235EA9E0005B4A2C = {
 						CreatedOnToolsVersion = 11.1;
+						ProvisioningStyle = Automatic;
 					};
 					F6727F7F235EA9E1005B4A2C = {
 						CreatedOnToolsVersion = 11.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = F6727F69235EA9E0005B4A2C;
 					};
 					F6727F8A235EA9E2005B4A2C = {
 						CreatedOnToolsVersion = 11.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = F6727F69235EA9E0005B4A2C;
 					};
 				};
@@ -604,7 +607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7KXS2AAHE9;
 				INFOPLIST_FILE = SamsClubDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -625,7 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7KXS2AAHE9;
 				INFOPLIST_FILE = SamsClubDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
