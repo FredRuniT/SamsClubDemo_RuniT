@@ -37,7 +37,6 @@ class ProductListCell: UICollectionViewCell {
         
         self.productImageView.sd_setImage(with: imageUrl, completed: nil)
         
-
         self.productNameLabel.attributedText = product.productName?.htmlToAttributedString
         self.productNameLabel.textColor = .label
         self.productNameLabel.numberOfLines = 0

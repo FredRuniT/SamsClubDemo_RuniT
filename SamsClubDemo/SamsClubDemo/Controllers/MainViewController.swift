@@ -10,8 +10,6 @@ import UIKit
 import SDWebImage
 import Cosmos
 
-
-
 fileprivate let productListCellId = "productListCellId"
 fileprivate let footerID = "loadingfooterID"
 
@@ -50,15 +48,12 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
             switch result {
                 
             case .success(let inventoryItems):
-                
-                if inventoryItems.statusCode == 400 {
+                //TODO: Move this to network class!
+                if inventoryItems.statusCode != 200 {
                     DispatchQueue.main.async {
-                        //                        self.topRatedCollectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
+                        self.inventoryCollectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
                     }
-                    
-                } else if inventoryItems.statusCode == 500 {
-                    // self.topRatedCollectionView.backgroundView = self.serverErorrImageVIew
-                }
+                } 
                 self.inventoryResults = inventoryItems
                 self.inventoryProducts = inventoryItems.products
                 
@@ -69,7 +64,8 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
             case.failure(let err):
                 print(err.localizedDescription)
                 DispatchQueue.main.async {
-                    //self.topRatedCollectionView.backgroundView = self.poorConnectionImageView
+                    self.inventoryCollectionView.backgroundView = self.productListViewModel.poorConnectionImageView
+    
                 }
             }
         }
@@ -104,15 +100,13 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
             } else {
                 flowLayout.itemSize = CGSize(width: containerSize.width, height: 120)
             }
-
+            
         }
         
         DispatchQueue.main.async {
             self.inventoryCollectionView.reloadData()
         }
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -131,7 +125,7 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+        
         return inventoryProducts.count
     }
     

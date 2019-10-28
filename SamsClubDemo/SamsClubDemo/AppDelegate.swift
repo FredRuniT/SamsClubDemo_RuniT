@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //MARK Setting the RootViewController to our MainViewController
+        //MARK - Setting the RootViewController to our MainViewController
         window?.rootViewController = MainViewController()
         
         return true

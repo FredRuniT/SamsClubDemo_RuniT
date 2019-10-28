@@ -13,8 +13,8 @@
 		F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */; };
 		F61C849A23632CEA0034139F /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C849923632CEA0034139F /* ProductListView.swift */; };
 		F644BA6D236553F200592922 /* SlashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644BA6C236553F200592922 /* SlashViewController.swift */; };
+		F65D6A7A23674010001E2259 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65D6A7923674010001E2259 /* SceneDelegate.swift */; };
 		F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */; };
-		F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */; };
 		F6727F75235EA9E0005B4A2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F73235EA9E0005B4A2C /* Main.storyboard */; };
 		F6727F77235EA9E1005B4A2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6727F76235EA9E1005B4A2C /* Assets.xcassets */; };
 		F6727F7A235EA9E1005B4A2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F78235EA9E1005B4A2C /* LaunchScreen.storyboard */; };
@@ -55,9 +55,9 @@
 		F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductLoadingFoooter.swift; sourceTree = "<group>"; };
 		F61C849923632CEA0034139F /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		F644BA6C236553F200592922 /* SlashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlashViewController.swift; sourceTree = "<group>"; };
+		F65D6A7923674010001E2259 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F6727F6A235EA9E0005B4A2C /* SamsClubDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamsClubDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F6727F74235EA9E0005B4A2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F6727F76235EA9E1005B4A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6727F79235EA9E1005B4A2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,8 +139,8 @@
 			children = (
 				F6727FE2235FFE40005B4A2C /* Networking */,
 				F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */,
+				F65D6A7923674010001E2259 /* SceneDelegate.swift */,
 				F6727F78235EA9E1005B4A2C /* LaunchScreen.storyboard */,
-				F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */,
 				F6727F7B235EA9E1005B4A2C /* Info.plist */,
 				F6727F9F235EAE24005B4A2C /* Models */,
 				F6727FA1235EAE47005B4A2C /* Views */,
@@ -417,11 +417,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6727FA6235EBABE005B4A2C /* MainViewController.swift in Sources */,
+				F65D6A7A23674010001E2259 /* SceneDelegate.swift in Sources */,
 				F644BA6D236553F200592922 /* SlashViewController.swift in Sources */,
 				F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */,
 				F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */,
 				F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */,
-				F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */,
 				F6727FE4235FFE40005B4A2C /* ServiceManager.swift in Sources */,
 				F6727FEA235FFE64005B4A2C /* UIView+Layout.swift in Sources */,
 				F6727FDE235FFDDA005B4A2C /* Products.swift in Sources */,
