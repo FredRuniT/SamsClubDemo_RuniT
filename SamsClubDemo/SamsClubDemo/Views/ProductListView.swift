@@ -52,8 +52,6 @@ class ProductListView: UIViewController {
         self.clintErorrImageVIew.image = UIImage(named: "errorImage.jpg")
         self.serverErorrImageVIew.image = UIImage(named: "itsnotYouItsMe")
         self.poorConnectionImageView.image = UIImage(named: "no_internet.jpg")
-        self.serverErorrImageVIew.fillSuperview()
-        self.view.addSubview(serverErorrImageVIew)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -1,0 +1,4 @@
+apple_id("fburns17d@gmail.com") # Your Apple email address
+itc_team_name "RuniT, LLC"
+team_id "7KXS2AAHE9"
+app_identifier("com.samsclubRuniT.demo") # The bundle identifier of your app

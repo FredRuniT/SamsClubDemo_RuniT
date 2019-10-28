@@ -33,7 +33,6 @@ class SlashViewController: UIViewController {
         }) { (true) in
             self.fadeInLogoImage.alpha = 1
             self.view.fadeOut()
-            self.view.removeFromSuperview()
             self.productListVC.navigationController?.isNavigationBarHidden = false
         }
     }
