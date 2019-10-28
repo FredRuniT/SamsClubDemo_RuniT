@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Yj-3J-gic">
-                                <rect key="frame" x="20" y="116.66666666666669" width="374" height="345"/>
+                                <rect key="frame" x="20" y="119" width="374" height="345"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSv-KJ-Web">
-                                <rect key="frame" x="20" y="471.66666666666674" width="374" height="390.33333333333326"/>
+                                <rect key="frame" x="20" y="474" width="374" height="388"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-k1-uzH">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
@@ -35,17 +34,17 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Stock" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6D-L8-ICP">
-                                                        <rect key="frame" x="0.0" y="45.666666666666686" width="271.66666666666669" height="13.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="45.666666666666629" width="271.66666666666669" height="13.333333333333336"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Short Description" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHN-Sf-oK6">
-                                                        <rect key="frame" x="0.0" y="63.999999999999943" width="271.66666666666669" height="29"/>
+                                                        <rect key="frame" x="0.0" y="64" width="271.66666666666669" height="29"/>
                                                         <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="26"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OH-aD-kSA">
-                                                        <rect key="frame" x="0.0" y="97.999999999999943" width="271.66666666666669" height="30"/>
+                                                        <rect key="frame" x="0.0" y="98" width="271.66666666666669" height="30"/>
                                                         <state key="normal" title="See Full Product Description">
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -54,7 +53,7 @@
                                                         </connections>
                                                     </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yne-aK-ZOe">
-                                                        <rect key="frame" x="0.0" y="127.99999999999994" width="54.666666666666664" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="128" width="54.666666666666664" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="23"/>
                                                         <nil key="highlightedColor"/>
@@ -86,7 +85,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="Orh-L3-Qe0">
-                                <rect key="frame" x="20" y="64" width="374" height="47.666666666666657"/>
+                                <rect key="frame" x="20" y="64" width="374" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-ex-Axz">
                                         <rect key="frame" x="0.0" y="0.0" width="217" height="47.666666666666664"/>
@@ -106,7 +105,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-TZ-fw8" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="270" y="0.0" width="104" height="20"/>
+                                        <rect key="frame" x="270" y="0.0" width="104" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -245,22 +244,13 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LNM-QK-mgZ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="268.66666666666669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1O-Tk-jwx">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1O-Tk-jwx">
+                                    <size key="itemSize" width="300" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productListCellId" id="API-nT-PVc" customClass="ProductListCell" customModule="SamsClubDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Hz9-Al-Uaz">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="h2z-kz-Oii" id="XeD-DP-ZTB"/>
                                     <outlet property="delegate" destination="h2z-kz-Oii" id="ITL-Is-yzR"/>

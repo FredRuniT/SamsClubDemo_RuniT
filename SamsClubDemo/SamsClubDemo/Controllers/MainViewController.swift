@@ -10,10 +10,16 @@ import UIKit
 import SDWebImage
 import Cosmos
 
+enum LayoutOption {
+    case list
+    case smallGrid
+    case largeGrid
+}
+
 fileprivate let productListCellId = "productListCellId"
 fileprivate let footerID = "loadingfooterID"
 
-class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICollectionViewDelegate {
     
     fileprivate var serviceManager = ServiceManager()
     fileprivate var inventoryResults: Inventory?
@@ -27,10 +33,12 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
         
         super.viewDidLoad()
         self.fetchData()
-    
-        //Register Footer
         
+        //Register Footer
         self.topRatedCollectionView.register(ProductLoadindFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
+        self.topRatedCollectionView.register(UINib(nibName: "TopRatedProductsView", bundle: nil), forCellWithReuseIdentifier: productListCellId)
+        setupLayout(with: view.bounds.size)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,11 +58,11 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
                 
                 if inventoryItems.statusCode == 400 {
                     DispatchQueue.main.async {
-//                        self.topRatedCollectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
+                        //                        self.topRatedCollectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
                     }
                     
                 } else if inventoryItems.statusCode == 500 {
-                   // self.topRatedCollectionView.backgroundView = self.serverErorrImageVIew
+                    // self.topRatedCollectionView.backgroundView = self.serverErorrImageVIew
                 }
                 self.inventoryResults = inventoryItems
                 self.inventoryProducts = inventoryItems.products
@@ -71,6 +79,39 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
             }
         }
     }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+           super.viewWillTransition(to: size, with: coordinator)
+           setupLayout(with: size)
+       }
+       
+       override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           setupLayout(with: view.bounds.size)
+       }
+    
+    private func setupLayout(with containerSize: CGSize) {
+        guard let flowLayout = self.topRatedCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.sectionInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 8.0, right: 0)
+        
+        if traitCollection.horizontalSizeClass == .regular {
+            let minItemWidth: CGFloat = 300
+            let numberOfCell = containerSize.width / minItemWidth
+            let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
+            flowLayout.itemSize = CGSize(width: width, height: 91)
+        } else {
+            flowLayout.itemSize = CGSize(width: topRatedCollectionView.frame.width, height: 91)
+        }
+        
+        DispatchQueue.main.async {
+            self.topRatedCollectionView.reloadData()
+        }
+    }
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -141,15 +182,5 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
         detailsVC.product = productInventory
         navigationController?.pushViewController(detailsVC, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let cell = ProductListCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 150))
-    
-        cell.layoutIfNeeded()
-        let estimatedSize = cell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 150))
-        
-        return .init(width: view.frame.width, height: estimatedSize.height)
     }
 }

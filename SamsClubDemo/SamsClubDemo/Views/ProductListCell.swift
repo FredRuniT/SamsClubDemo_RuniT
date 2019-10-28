@@ -15,26 +15,23 @@ class ProductListCell: UICollectionViewCell {
     var product: Products?
     let productDetailsVC = ProductDetailsViewController()
     
-    lazy var productImageView = UIImageView(cornerRadius: 0)
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productInstockLabel: UILabel!
+    @IBOutlet weak var cosmosView: CosmosView!
+
     
-    lazy var productNameLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
     
-    lazy var productPriceLabel = UILabel(text: "", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .label)
+//    lazy var productImageView = UIImageView(cornerRadius: 0)
+//
+//    lazy var productNameLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
+//
+//    lazy var productPriceLabel = UILabel(text: "", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .label)
+//
+//    lazy var productInstockLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .caption1))
     
-    lazy var productInstockLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .caption1))
-    
-    lazy var cosmosView: CosmosView = {
-        var cosmosView = CosmosView()
-        cosmosView.settings.updateOnTouch = false
-        cosmosView.settings.totalStars = 5
-        cosmosView.settings.starSize = 16
-        cosmosView.settings.starMargin = 3
-        cosmosView.settings.fillMode = .precise
-        cosmosView.settings.textMargin = 5
-        cosmosView.settings.textColor = .label
-        
-        return cosmosView
-    }()
+
     
     lazy var viewProductImage: UIImageView = {
         let viewProductImage = UIImageView()
@@ -55,13 +52,20 @@ class ProductListCell: UICollectionViewCell {
             return
         }
         
+        cosmosView.settings.updateOnTouch = false
+               cosmosView.settings.totalStars = 5
+               cosmosView.settings.starSize = 16
+               cosmosView.settings.starMargin = 3
+               cosmosView.settings.fillMode = .precise
+               cosmosView.settings.textMargin = 5
+               cosmosView.settings.textColor = .label
+        
         let baseUrl = ServiceManager.shared.getbaseUrlString(imagId: product.productImage)
         let imageUrl = URL(string: baseUrl + product.productImage)
         
         self.productImageView.sd_setImage(with: imageUrl, completed: nil)
         
-        self.productImageView.constrainWidth(constant: 80)
-        self.productImageView.constrainHeight(constant: 60)
+
         
         self.productNameLabel.text = product.productName
         self.productPriceLabel.text = product.price
@@ -72,17 +76,6 @@ class ProductListCell: UICollectionViewCell {
         productNameLabel.font = .preferredFont(forTextStyle: .callout)
         productInstockLabel.font = .preferredFont(forTextStyle: .footnote)
         
-        let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, cosmosView, productPriceLabel, productInstockLabel])
-        labelsStackView.axis = .vertical
-        labelsStackView.spacing = 5
-        
-        let cartImageStackView = UIStackView(arrangedSubviews: [viewProductImage])
-        
-        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView, cartImageStackView])
-        productStackView.spacing = 10
-        productStackView.alignment = .center
-        
-        addSubview(productStackView)
-        productStackView.fillSuperview()
+
     }
 }
