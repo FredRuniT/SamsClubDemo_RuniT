@@ -16,11 +16,11 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios create_app
+### ios beta
 ```
-fastlane ios create_app
+fastlane ios beta
 ```
-Create app on Apple Developer and App Store Connect sites
+Upload App To TestFlight
 
 ----
 
