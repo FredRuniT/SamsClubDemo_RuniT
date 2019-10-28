@@ -63,3 +63,11 @@ extension URLSession {
         }
     }
 }
+
+extension UIView {
+    func fadeOut(_ duration: TimeInterval = 0.5, delay: TimeInterval = 0.7, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.alpha = 0.0
+        }, completion: completion)
+    }
+}

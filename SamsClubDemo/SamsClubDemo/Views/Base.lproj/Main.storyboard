@@ -240,7 +240,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LNM-QK-mgZ">
-                                <rect key="frame" x="0.0" y="414" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1O-Tk-jwx">
                                     <size key="itemSize" width="300" height="130"/>
@@ -355,20 +355,13 @@
                                     <outlet property="delegate" destination="h2z-kz-Oii" id="ITL-Is-yzR"/>
                                 </connections>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itsnotYouItsMe" translatesAutoresizingMaskIntoConstraints="NO" id="eVM-Y9-Lhq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="326"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="LNM-QK-mgZ" firstAttribute="trailing" secondItem="ucx-9F-xrE" secondAttribute="trailing" id="2t4-KF-xfl"/>
-                            <constraint firstItem="LNM-QK-mgZ" firstAttribute="top" secondItem="eVM-Y9-Lhq" secondAttribute="bottom" id="5bQ-3N-Voi"/>
                             <constraint firstItem="LNM-QK-mgZ" firstAttribute="leading" secondItem="ucx-9F-xrE" secondAttribute="leading" id="9w7-bR-K98"/>
                             <constraint firstItem="ucx-9F-xrE" firstAttribute="bottom" secondItem="LNM-QK-mgZ" secondAttribute="bottom" id="JCd-AT-RIg"/>
-                            <constraint firstItem="eVM-Y9-Lhq" firstAttribute="trailing" secondItem="ucx-9F-xrE" secondAttribute="trailing" id="LTS-RR-XaK"/>
-                            <constraint firstItem="eVM-Y9-Lhq" firstAttribute="top" secondItem="ucx-9F-xrE" secondAttribute="top" id="MOe-2g-SBU"/>
-                            <constraint firstItem="eVM-Y9-Lhq" firstAttribute="leading" secondItem="ucx-9F-xrE" secondAttribute="leading" id="UwF-gN-za4"/>
-                            <constraint firstItem="LNM-QK-mgZ" firstAttribute="height" secondItem="igM-89-hKE" secondAttribute="height" multiplier="0.5" id="awb-P3-idG"/>
+                            <constraint firstItem="LNM-QK-mgZ" firstAttribute="top" secondItem="ucx-9F-xrE" secondAttribute="top" id="eto-wE-ZTh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ucx-9F-xrE"/>
                     </view>
@@ -381,9 +374,73 @@
             </objects>
             <point key="canvasLocation" x="86.956521739130437" y="-1169.1964285714284"/>
         </scene>
+        <!--Slash View Controller-->
+        <scene sceneID="bT7-j2-yTz">
+            <objects>
+                <viewController storyboardIdentifier="SlashViewController" id="4Hl-cu-IYV" customClass="SlashViewController" customModule="SamsClubDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Viq-P9-aMz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopper" translatesAutoresizingMaskIntoConstraints="NO" id="nEF-JQ-qyv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SamsClub" translatesAutoresizingMaskIntoConstraints="NO" id="SD3-5m-3sM">
+                                <rect key="frame" x="40" y="398" width="334" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="q3Q-4x-JVO"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JAc-Ne-tU9">
+                                <rect key="frame" x="157" y="297.66666666666669" width="100" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="5FM-jL-SVX"/>
+                                    <constraint firstAttribute="width" constant="100" id="ebA-m9-Aws"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAVINGS MADE SIMPLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7d-qT-cbA">
+                                <rect key="frame" x="54" y="307" width="306" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="2s7-XD-5nJ"/>
+                                    <constraint firstAttribute="width" constant="306" id="8c9-qn-iZn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DamascusLight" family="Damascus" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.41176470590000003" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SD3-5m-3sM" firstAttribute="leading" secondItem="dtL-Qc-eoP" secondAttribute="leading" constant="40" id="6Px-o1-c4V"/>
+                            <constraint firstItem="nEF-JQ-qyv" firstAttribute="trailing" secondItem="dtL-Qc-eoP" secondAttribute="trailing" id="A3a-ae-aF5"/>
+                            <constraint firstAttribute="trailing" secondItem="SD3-5m-3sM" secondAttribute="trailing" constant="40" id="P9I-VB-AC9"/>
+                            <constraint firstItem="nEF-JQ-qyv" firstAttribute="leading" secondItem="dtL-Qc-eoP" secondAttribute="leading" id="eUd-cL-csD"/>
+                            <constraint firstItem="JAc-Ne-tU9" firstAttribute="centerY" secondItem="SD3-5m-3sM" secondAttribute="centerY" constant="-150" id="flz-Dv-siB"/>
+                            <constraint firstItem="SD3-5m-3sM" firstAttribute="centerX" secondItem="Viq-P9-aMz" secondAttribute="centerX" id="fuA-VI-0Sz"/>
+                            <constraint firstAttribute="bottom" secondItem="nEF-JQ-qyv" secondAttribute="bottom" id="pu2-nn-aeL"/>
+                            <constraint firstItem="JAc-Ne-tU9" firstAttribute="centerX" secondItem="SD3-5m-3sM" secondAttribute="centerX" id="qI5-2Z-zLe"/>
+                            <constraint firstItem="l7d-qT-cbA" firstAttribute="centerX" secondItem="SD3-5m-3sM" secondAttribute="centerX" id="tPb-bl-WQK"/>
+                            <constraint firstItem="SD3-5m-3sM" firstAttribute="top" secondItem="l7d-qT-cbA" secondAttribute="bottom" constant="8" id="usd-ga-u4l"/>
+                            <constraint firstItem="nEF-JQ-qyv" firstAttribute="top" secondItem="Viq-P9-aMz" secondAttribute="top" id="vkX-qr-xHA"/>
+                            <constraint firstItem="SD3-5m-3sM" firstAttribute="centerY" secondItem="Viq-P9-aMz" secondAttribute="centerY" id="yL3-av-ZEp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dtL-Qc-eoP"/>
+                    </view>
+                    <connections>
+                        <outlet property="connectedTextlabel" destination="l7d-qT-cbA" id="26T-5k-rAP"/>
+                        <outlet property="fadeInLogoImage" destination="JAc-Ne-tU9" id="Qfp-SS-RMJ"/>
+                        <outlet property="logoImageView" destination="SD3-5m-3sM" id="yx5-ls-XFU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mV-0M-04O" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1621.7391304347827" y="-1169.1964285714284"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="SamsClub" width="2000" height="371"/>
         <image name="cart.badge.plus" catalog="system" width="64" height="48"/>
-        <image name="itsnotYouItsMe" width="1202" height="1928"/>
+        <image name="shopper" width="680" height="453"/>
     </resources>
 </document>

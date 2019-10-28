@@ -10,50 +10,37 @@ import UIKit
 import SDWebImage
 import Cosmos
 
-enum LayoutOption {
-    case list
-    case smallGrid
-    case largeGrid
-}
+
 
 fileprivate let productListCellId = "productListCellId"
 fileprivate let footerID = "loadingfooterID"
 
-class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainViewController: ProductListView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     fileprivate var serviceManager = ServiceManager()
     fileprivate var inventoryResults: Inventory?
     fileprivate var inventoryProducts = [Products]()
-    fileprivate var productListViewModel = ProductListViewModel()
+    fileprivate var productListViewModel = ProductListView()
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
     private var layoutOption: LayoutOption = .list {
-           didSet {
-               setupLayout(with: view.bounds.size)
-           }
-       }
+        didSet {
+            setupLayout(with: view.bounds.size)
+        }
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         self.fetchData()
         
-        self.title = "Products"
-        
-        //Register Footer
+        //MARK - Register Loading Footer
         self.inventoryCollectionView.register(ProductLoadindFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
-       // self.inventoryCollectionView.register(UINib(nibName: "InventoryListView", bundle: nil), forCellWithReuseIdentifier: productListCellId)
         setupLayout(with: view.bounds.size)
-         self.layoutOption = .list
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.backgroundColor = .systemBackground
-        self.tabBarController?.tabBar.isHidden = true
+        self.layoutOption = .list
     }
     
     private func fetchData() {
@@ -88,15 +75,15 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
         }
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-           super.viewWillTransition(to: size, with: coordinator)
-           setupLayout(with: size)
-       }
-       
-       override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-           super.traitCollectionDidChange(previousTraitCollection)
-           setupLayout(with: view.bounds.size)
-       }
-
+        super.viewWillTransition(to: size, with: coordinator)
+        setupLayout(with: size)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupLayout(with: view.bounds.size)
+    }
+    
     
     private func setupLayout(with containerSize: CGSize) {
         guard let flowLayout = self.inventoryCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
@@ -117,31 +104,15 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
             } else {
                 flowLayout.itemSize = CGSize(width: containerSize.width, height: 120)
             }
-            
-        case .largeGrid, .smallGrid:
-            let minItemWidth: CGFloat
-            if layoutOption == .smallGrid {
-                minItemWidth = 106
-            } else {
-                minItemWidth = 160
-            }
-            
-            let numberOfCell = containerSize.width / minItemWidth
-            let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
-            let height = ceil(width * (4.0 / 3.0))
 
-            flowLayout.minimumInteritemSpacing = 0
-            flowLayout.minimumLineSpacing = 0
-            flowLayout.itemSize = CGSize(width: width, height: height)
-            flowLayout.sectionInset = .zero
         }
         
-           DispatchQueue.main.async {
-                 self.inventoryCollectionView.reloadData()
-             }
+        DispatchQueue.main.async {
+            self.inventoryCollectionView.reloadData()
+        }
     }
     
-   
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -214,7 +185,7 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
         detailsVC.product = productInventory
         navigationController?.pushViewController(detailsVC, animated: true)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width - 20, height: 130)
     }

@@ -11,8 +11,8 @@
 		F607DB562360BE7D00271CB8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB552360BE7D00271CB8 /* Extensions.swift */; };
 		F607DB5A23617DAA00271CB8 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */; };
 		F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */; };
-		F61C849A23632CEA0034139F /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C849923632CEA0034139F /* ProductListViewModel.swift */; };
-		F644BA6D236553F200592922 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644BA6C236553F200592922 /* SplashView.swift */; };
+		F61C849A23632CEA0034139F /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61C849923632CEA0034139F /* ProductListView.swift */; };
+		F644BA6D236553F200592922 /* SlashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F644BA6C236553F200592922 /* SlashViewController.swift */; };
 		F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */; };
 		F6727F70235EA9E0005B4A2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */; };
 		F6727F75235EA9E0005B4A2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6727F73235EA9E0005B4A2C /* Main.storyboard */; };
@@ -53,8 +53,8 @@
 		F607DB552360BE7D00271CB8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductLoadingFoooter.swift; sourceTree = "<group>"; };
-		F61C849923632CEA0034139F /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
-		F644BA6C236553F200592922 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F61C849923632CEA0034139F /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
+		F644BA6C236553F200592922 /* SlashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlashViewController.swift; sourceTree = "<group>"; };
 		F6727F6A235EA9E0005B4A2C /* SamsClubDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamsClubDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6727F6D235EA9E0005B4A2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6727F6F235EA9E0005B4A2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		F6727FA0235EAE3B005B4A2C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F61C849923632CEA0034139F /* ProductListViewModel.swift */,
+				F61C849923632CEA0034139F /* ProductListView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
 				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
 				F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */,
-				F644BA6C236553F200592922 /* SplashView.swift */,
+				F644BA6C236553F200592922 /* SlashViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -417,7 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6727FA6235EBABE005B4A2C /* MainViewController.swift in Sources */,
-				F644BA6D236553F200592922 /* SplashView.swift in Sources */,
+				F644BA6D236553F200592922 /* SlashViewController.swift in Sources */,
 				F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */,
 				F61C8492236214AB0034139F /* ProductLoadingFoooter.swift in Sources */,
 				F6727F6E235EA9E0005B4A2C /* AppDelegate.swift in Sources */,
@@ -428,7 +428,7 @@
 				F6727FE9235FFE64005B4A2C /* CustomFonts.swift in Sources */,
 				F6727FAC235EC2CA005B4A2C /* ProductListCell.swift in Sources */,
 				F607DB562360BE7D00271CB8 /* Extensions.swift in Sources */,
-				F61C849A23632CEA0034139F /* ProductListViewModel.swift in Sources */,
+				F61C849A23632CEA0034139F /* ProductListView.swift in Sources */,
 				F607DB5A23617DAA00271CB8 /* ProductDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

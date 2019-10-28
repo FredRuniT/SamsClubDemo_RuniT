@@ -38,3 +38,8 @@ struct Products: Decodable {
     let reviewCount: Int?
     let inStock: Bool?
 }
+
+//MARK: - CollectionView Layouts
+enum LayoutOption {
+    case list
+}
