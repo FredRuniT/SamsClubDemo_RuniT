@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Yj-3J-gic">
-                                <rect key="frame" x="20" y="119" width="374" height="345"/>
+                                <rect key="frame" x="20" y="116.66666666666669" width="374" height="345"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSv-KJ-Web">
-                                <rect key="frame" x="20" y="474" width="374" height="388"/>
+                                <rect key="frame" x="20" y="471.66666666666674" width="374" height="390.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-k1-uzH">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
@@ -34,17 +35,17 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Stock" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6D-L8-ICP">
-                                                        <rect key="frame" x="0.0" y="45.666666666666629" width="271.66666666666669" height="13.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="45.666666666666686" width="271.66666666666669" height="13.333333333333336"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Short Description" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHN-Sf-oK6">
-                                                        <rect key="frame" x="0.0" y="64" width="271.66666666666669" height="29"/>
+                                                        <rect key="frame" x="0.0" y="63.999999999999943" width="271.66666666666669" height="29"/>
                                                         <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="26"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OH-aD-kSA">
-                                                        <rect key="frame" x="0.0" y="98" width="271.66666666666669" height="30"/>
+                                                        <rect key="frame" x="0.0" y="97.999999999999943" width="271.66666666666669" height="30"/>
                                                         <state key="normal" title="See Full Product Description">
                                                             <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -53,7 +54,7 @@
                                                         </connections>
                                                     </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yne-aK-ZOe">
-                                                        <rect key="frame" x="0.0" y="128" width="54.666666666666664" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="127.99999999999994" width="54.666666666666664" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="23"/>
                                                         <nil key="highlightedColor"/>
@@ -85,7 +86,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="Orh-L3-Qe0">
-                                <rect key="frame" x="20" y="64" width="374" height="50"/>
+                                <rect key="frame" x="20" y="64" width="374" height="47.666666666666657"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-ex-Axz">
                                         <rect key="frame" x="0.0" y="0.0" width="217" height="47.666666666666664"/>
@@ -105,7 +106,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-TZ-fw8" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="270" y="0.0" width="104" height="50"/>
+                                        <rect key="frame" x="270" y="0.0" width="104" height="20"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -242,13 +243,113 @@
                                 <rect key="frame" x="0.0" y="414" width="414" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N1O-Tk-jwx">
-                                    <size key="itemSize" width="300" height="120"/>
-                                    <size key="estimatedItemSize" width="300" height="120"/>
+                                    <size key="itemSize" width="300" height="130"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="productListCellId" id="Fad-0N-HEC" customClass="ProductListCell" customModule="SamsClubDemo" customModuleProvider="target">
+                                        <rect key="frame" x="57" y="0.0" width="300" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6W0-7N-rZj">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w34-yJ-5Va">
+                                                    <rect key="frame" x="0.0" y="19" width="80" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="jf3-cY-axF"/>
+                                                        <constraint firstAttribute="width" constant="80" id="xuC-DG-3Tf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmX-qx-cu9">
+                                                    <rect key="frame" x="0.0" y="8" width="300" height="1"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="e4P-xX-vjo"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5X-uV-QKw">
+                                                    <rect key="frame" x="85" y="17" width="169" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart.badge.plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SRf-do-mNS">
+                                                    <rect key="frame" x="260" y="50.333333333333329" width="30" height="29.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="08B-H7-cce"/>
+                                                        <constraint firstAttribute="height" constant="30" id="onJ-bB-b9n"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhD-Xf-wVA" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="85" y="41.333333333333336" width="74" height="14"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" red="0.0" green="0.41176470590000003" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="textMargin">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS0-h5-5Qx">
+                                                    <rect key="frame" x="85" y="60.333333333333336" width="31" height="15.666666666666664"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Stock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnX-7F-LLO">
+                                                    <rect key="frame" x="85" y="81" width="62" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="w34-yJ-5Va" firstAttribute="top" secondItem="LmX-qx-cu9" secondAttribute="bottom" constant="10" id="2Ru-5m-icm"/>
+                                                <constraint firstItem="w34-yJ-5Va" firstAttribute="leading" secondItem="6W0-7N-rZj" secondAttribute="leading" id="8S5-Rr-c9T"/>
+                                                <constraint firstItem="LmX-qx-cu9" firstAttribute="top" secondItem="6W0-7N-rZj" secondAttribute="top" constant="8" id="Cbf-9i-LXR"/>
+                                                <constraint firstAttribute="trailing" secondItem="LmX-qx-cu9" secondAttribute="trailing" id="EFk-nd-cTL"/>
+                                                <constraint firstItem="LmX-qx-cu9" firstAttribute="leading" secondItem="6W0-7N-rZj" secondAttribute="leading" id="F3y-lx-xyH"/>
+                                                <constraint firstItem="NnX-7F-LLO" firstAttribute="top" secondItem="cS0-h5-5Qx" secondAttribute="bottom" constant="5" id="I3B-8v-EZh"/>
+                                                <constraint firstItem="FhD-Xf-wVA" firstAttribute="leading" secondItem="w34-yJ-5Va" secondAttribute="trailing" constant="5" id="IWo-zw-Ix9"/>
+                                                <constraint firstItem="NnX-7F-LLO" firstAttribute="leading" secondItem="w34-yJ-5Va" secondAttribute="trailing" constant="5" id="KWr-1J-MM4"/>
+                                                <constraint firstAttribute="trailing" secondItem="SRf-do-mNS" secondAttribute="trailing" constant="10" id="P7Q-hr-h2n"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NnX-7F-LLO" secondAttribute="trailing" constant="20" symbolic="YES" id="Ru4-in-L3J"/>
+                                                <constraint firstItem="cS0-h5-5Qx" firstAttribute="leading" secondItem="w34-yJ-5Va" secondAttribute="trailing" constant="5" id="T6P-cF-CtY"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cS0-h5-5Qx" secondAttribute="trailing" constant="20" symbolic="YES" id="UPZ-vk-Jk1"/>
+                                                <constraint firstItem="F5X-uV-QKw" firstAttribute="leading" secondItem="w34-yJ-5Va" secondAttribute="trailing" constant="5" id="XBu-AS-NPV"/>
+                                                <constraint firstItem="F5X-uV-QKw" firstAttribute="top" secondItem="LmX-qx-cu9" secondAttribute="bottom" constant="8" id="YM0-mL-h41"/>
+                                                <constraint firstItem="FhD-Xf-wVA" firstAttribute="top" secondItem="F5X-uV-QKw" secondAttribute="bottom" constant="5" id="avW-Tu-YUD"/>
+                                                <constraint firstItem="SRf-do-mNS" firstAttribute="leading" secondItem="F5X-uV-QKw" secondAttribute="trailing" constant="6" id="hnk-Kn-A4j"/>
+                                                <constraint firstItem="SRf-do-mNS" firstAttribute="centerY" secondItem="6W0-7N-rZj" secondAttribute="centerY" id="xEk-KT-HTX"/>
+                                                <constraint firstItem="cS0-h5-5Qx" firstAttribute="top" secondItem="FhD-Xf-wVA" secondAttribute="bottom" constant="5" id="xd7-hW-yja"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="cosmosView" destination="FhD-Xf-wVA" id="KhS-Np-Ldz"/>
+                                            <outlet property="productImageView" destination="w34-yJ-5Va" id="7iO-rH-6by"/>
+                                            <outlet property="productInstockLabel" destination="NnX-7F-LLO" id="W5e-Wf-kDi"/>
+                                            <outlet property="productNameLabel" destination="F5X-uV-QKw" id="8rA-vG-Nxn"/>
+                                            <outlet property="productPriceLabel" destination="cS0-h5-5Qx" id="JG2-jJ-nMd"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="h2z-kz-Oii" id="XeD-DP-ZTB"/>
                                     <outlet property="delegate" destination="h2z-kz-Oii" id="ITL-Is-yzR"/>
@@ -282,6 +383,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cart.badge.plus" catalog="system" width="64" height="48"/>
         <image name="itsnotYouItsMe" width="1202" height="1928"/>
     </resources>
 </document>

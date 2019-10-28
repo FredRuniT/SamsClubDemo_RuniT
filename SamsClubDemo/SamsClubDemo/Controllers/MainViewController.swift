@@ -43,7 +43,7 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
         
         //Register Footer
         self.inventoryCollectionView.register(ProductLoadindFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
-        self.inventoryCollectionView.register(UINib(nibName: "InventoryListView", bundle: nil), forCellWithReuseIdentifier: productListCellId)
+       // self.inventoryCollectionView.register(UINib(nibName: "InventoryListView", bundle: nil), forCellWithReuseIdentifier: productListCellId)
         setupLayout(with: view.bounds.size)
          self.layoutOption = .list
         
@@ -110,10 +110,10 @@ class MainViewController: ProductListViewModel, UICollectionViewDataSource, UICo
             flowLayout.sectionInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 8.0, right: 0)
             
             if traitCollection.horizontalSizeClass == .regular {
-                let minItemWidth: CGFloat = 400
+                let minItemWidth: CGFloat = 300
                 let numberOfCell = containerSize.width / minItemWidth
                 let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
-                flowLayout.itemSize = CGSize(width: width, height: 120)
+                flowLayout.itemSize = CGSize(width: width, height: 130)
             } else {
                 flowLayout.itemSize = CGSize(width: containerSize.width, height: 120)
             }
