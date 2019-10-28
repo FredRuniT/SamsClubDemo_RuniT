@@ -175,6 +175,7 @@
 			children = (
 				F6727FA5235EBABE005B4A2C /* MainViewController.swift */,
 				F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */,
+				F644BA6C236553F200592922 /* SlashViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -190,7 +191,6 @@
 		F6727FA0235EAE3B005B4A2C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F61C849923632CEA0034139F /* ProductListView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
 				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
 				F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */,
-				F644BA6C236553F200592922 /* SlashViewController.swift */,
+				F61C849923632CEA0034139F /* ProductListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
