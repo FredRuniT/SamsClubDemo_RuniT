@@ -11,14 +11,12 @@ import Foundation
 
 class ServiceManager {
         
-    //MARK: Singleton
-    //TODO: Comment
+    //MARK - Reusable Service Manager
     static let shared = ServiceManager()
     
-    func fetchInventoryData<T: Decodable>(urlString: String, completion: @escaping (Result<T, APIServiceError>) -> ()) {
-        
-        guard let apiUrl = URL(string: urlString) else {return}
-        
+    func fetchInventoryData<T: Decodable>(pageNumber: Int, pageItems: Int, completion: @escaping (Result<T, APIServiceError>) -> ()) {
+        guard let apiUrl = URL(string: "https://mobile-tha-server.firebaseapp.com/walmartproducts/\(pageNumber)/\(pageItems)") else {return}
+
         URLSession.shared.dataTask(with: apiUrl) { (result) in
             switch result {
             case .success(let (response, data)):
@@ -36,5 +34,11 @@ class ServiceManager {
                 completion(.failure(.apiError))
             }
         }.resume()
+    }
+    
+    func getbaseUrlString(imagId: String) -> String {
+        //REMOTE CONFIG
+        let baseImageUrl = "https://mobile-tha-server.firebaseapp.com/"
+        return baseImageUrl
     }
 }

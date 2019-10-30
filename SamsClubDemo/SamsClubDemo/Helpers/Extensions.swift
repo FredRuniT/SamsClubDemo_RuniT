@@ -13,10 +13,10 @@ extension UILabel {
         self.init(frame: .zero)
         self.text = text
         self.font = font
-        self.numberOfLines = 2
-        self.textColor = .black
-        self.adjustsFontSizeToFitWidth = true
-        self.adjustsFontForContentSizeCategory = true
+       // self.numberOfLines = 2
+        self.textColor = .label
+//        self.adjustsFontSizeToFitWidth = true
+//        self.adjustsFontForContentSizeCategory = true
     }
 }
 
@@ -44,5 +44,30 @@ extension String {
         } catch {
             return NSAttributedString()
         }
+    }
+}
+
+extension URLSession {
+    func dataTask(with url: URL, result: @escaping (Result<(URLResponse, Data), Error>) -> Void) -> URLSessionDataTask {
+        return dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                result(.failure(error))
+                return
+            }
+            guard let response = response, let data = data else {
+                let error = NSError(domain: "error", code: 0, userInfo: nil)
+                result(.failure(error))
+                return
+            }
+            result(.success((response, data)))
+        }
+    }
+}
+
+extension UIView {
+    func fadeOut(_ duration: TimeInterval = 0.5, delay: TimeInterval = 0.7, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.alpha = 0.0
+        }, completion: completion)
     }
 }

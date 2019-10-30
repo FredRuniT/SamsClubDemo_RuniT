@@ -8,16 +8,16 @@
 
 import Foundation
 
-//MARK - Possible API Service Errors
+//MARK: - Possible API Service Errors
 public enum APIServiceError: Error {
     case apiError
-    case invalidEndpoint
+    case serverError
     case invalidResponse
     case noData
     case decodeError
 }
 
-//MARK - Inventory
+//MARK: - Inventory
 struct Inventory: Decodable {
     let products: [Products]
     let totalProducts: Int
@@ -37,4 +37,9 @@ struct Products: Decodable {
     var reviewRating: Float?
     let reviewCount: Int?
     let inStock: Bool?
+}
+
+//MARK: - CollectionView Layouts
+enum LayoutOption {
+    case list
 }

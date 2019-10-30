@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.014206">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: ensure_git_status_clean" time="0.029541">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: clean_build_artifacts" time="0.003098">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: clear_derived_data" time="0.611825">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: automatic_code_signing" time="0.096222">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: increment_build_number" time="2.13847">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: commit_version_bump" time="0.135441">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="7: gym" time="45.891947">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="8: build_app" time="23.524945">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="9: pilot" time="34.488561">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

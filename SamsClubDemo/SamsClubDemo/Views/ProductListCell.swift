@@ -12,63 +12,41 @@ import Cosmos
 
 class ProductListCell: UICollectionViewCell {
     
+    var product: Products?
     let productDetailsVC = ProductDetailsViewController()
     
-    lazy var productImageView = UIImageView(cornerRadius: 0)
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productInstockLabel: UILabel!
+    @IBOutlet weak var cosmosView: CosmosView!
+    @IBOutlet weak var productNameLabel: UILabel!
     
-    lazy var productNameLabel = UILabel(text: "", font: .preferredFont(forTextStyle: .subheadline), numberOfLines: 2)
     
-    lazy var productPriceLabel = UILabel(text: "$500", font: .systemFont(ofSize: 14, weight: .semibold), textColor: .gray)
-    
-    lazy var productInstockLabel = UILabel(text: "In Stock", font: .preferredFont(forTextStyle: .caption1))
-    
-    lazy var productRatingLabel = UILabel(text: "Rating", font: .preferredFont(forTextStyle: .caption1))
-    
-    lazy var cosmosView: CosmosView = {
-        var cosmosView = CosmosView()
-        cosmosView.settings.updateOnTouch = false
-        cosmosView.settings.totalStars = 5
-        cosmosView.settings.starSize = 16
-        cosmosView.settings.starMargin = 3
-        cosmosView.settings.fillMode = .precise
-        cosmosView.settings.textMargin = 5
-        cosmosView.settings.textColor = .blue
-        
-        return cosmosView
-    }()
-    
-    lazy var viewProductButton: UIButton = {
-        let viewProductButton = UIButton(type: .system)
-        viewProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
-        viewProductButton.layer.cornerRadius = 10
-        viewProductButton.constrainWidth(constant: 80)
-        viewProductButton.constrainHeight(constant: 30)
-        return viewProductButton
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        productImageView.constrainWidth(constant: 80)
-        productImageView.constrainHeight(constant: 60)
-        
-        let labelsStackView = UIStackView(arrangedSubviews: [productNameLabel, cosmosView, productPriceLabel, productInstockLabel])
-        labelsStackView.axis = .vertical
-        labelsStackView.spacing = 5
-        
-        let viewProductButtonSV = UIStackView(arrangedSubviews: [viewProductButton])
-        
-        let productStackView = UIStackView(arrangedSubviews: [productImageView, labelsStackView, viewProductButtonSV])
-        productStackView.spacing = 10
-        productStackView.alignment = .center
-        
-        addSubview(productStackView)
-        
-        productStackView.fillSuperview(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
-        
+    func configure(withProductResult product: Products) {
+        self.product = product
+        configureProductCell()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func configureProductCell() {
+        guard let product = self.product else {
+            return
+        }
+        
+        let baseUrl = ServiceManager.shared.getbaseUrlString(imagId: product.productImage)
+        let imageUrl = URL(string: baseUrl + product.productImage)
+        
+        self.productImageView.sd_setImage(with: imageUrl, completed: nil)
+        
+        self.productNameLabel.attributedText = product.productName?.htmlToAttributedString
+        self.productNameLabel.textColor = .label
+        self.productNameLabel.numberOfLines = 0
+        
+        self.productNameLabel.adjustsFontForContentSizeCategory = true
+        self.productPriceLabel.text = product.price
+        self.productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
+        
+        self.productPriceLabel.font = .preferredFont(forTextStyle: .callout)
+        self.productNameLabel.font = .preferredFont(forTextStyle: .subheadline)
+        self.productInstockLabel.font = .preferredFont(forTextStyle: .footnote)
     }
 }

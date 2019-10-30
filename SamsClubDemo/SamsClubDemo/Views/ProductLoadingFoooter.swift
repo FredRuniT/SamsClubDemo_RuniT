@@ -17,7 +17,6 @@ class ProductLoadindFooter: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        //TODO: Use Walmart Color
         let loadingStackView = VerticalStackView(arrangedSubviews: [activityView, activityLoadingLabel], spacing: 10)
         
         self.activityLoadingLabel.textAlignment = .center
