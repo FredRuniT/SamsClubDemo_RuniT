@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SlashViewController: UIViewController {
+class SplashScreenViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var fadeInLogoImage: UIImageView!
      @IBOutlet weak var connectedTextlabel: UILabel!
-    var productListVC = MainViewController()
+    var productListVC = ProductListViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
