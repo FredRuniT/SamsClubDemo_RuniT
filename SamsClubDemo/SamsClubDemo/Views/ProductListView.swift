@@ -75,9 +75,9 @@ class ProductListView: UIViewController {
                 let minItemWidth: CGFloat = 300
                 let numberOfCell = containerSize.width / minItemWidth
                 let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
-                flowLayout.itemSize = CGSize(width: width, height: 130)
+                flowLayout.itemSize = CGSize(width: width, height: 120)
             } else {
-                flowLayout.itemSize = CGSize(width: containerSize.width, height: 120)
+                flowLayout.itemSize = CGSize(width: containerSize.width, height: 110)
             }
         }
     }

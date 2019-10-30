@@ -19,7 +19,7 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -27,39 +27,6 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
         self.fetchData()
     }
     
-    private func fetchData() {
-        serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15)
-        { (result: Result<Inventory, APIServiceError>) in
-            
-            switch result {
-                
-            case .success(let inventoryItems):
-                //TODO: Move this to network class!
-                if inventoryItems.statusCode != 200 {
-                    DispatchQueue.main.async {
-                        
-                        self.inventoryCollectionView.backgroundView = self.errorImageView
-                    }
-                }
-                
-                self.inventoryResults = inventoryItems
-                self.inventoryProducts = inventoryItems.products
-                
-                DispatchQueue.main.async {
-                    
-                    self.inventoryCollectionView.reloadData()
-                }
-                
-            case.failure(let err):
-                print(err.localizedDescription)
-                
-                DispatchQueue.main.async {
-                    
-                    self.inventoryCollectionView.backgroundView = self.errorImageView
-                }
-            }
-        }
-    }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         setupLayout(with: size)
@@ -101,32 +68,11 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
         cell.backgroundColor = .secondarySystemBackground
         cell.layer.cornerRadius = 5
         
-        //MARK: - Pagination Implementation
+        
         if indexPath.item == (inventoryProducts.count) - 5 && !isPaginating {
             isPaginating = true
-            serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15) { (result: Result<Inventory, APIServiceError>) in
-                switch result {
-                    
-                case .success(let inventoryItems):
-                    if inventoryItems.products.count == 0 {
-                        self.isDonePaginating = true
-                    }
-  
-                    self.inventoryProducts += inventoryItems.products
-                    
-                    if (self.inventoryProducts.count > 30) {
-                        self.productPageNumber += 1
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.inventoryCollectionView.reloadData()
-                    }
-                    self.isPaginating = false
-                    
-                case.failure(let err):
-                    print("Failed to fetch products", err)
-                }
-            }
+            
+            self.paginateData()
         }
         return cell
     }
@@ -141,6 +87,68 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 20, height: 130)
+        return .init(width: view.frame.width - 20, height: 120)
+    }
+    
+    fileprivate func paginateData() {
+        
+        //MARK: - Pagination Implementation
+        serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15) { (result: Result<Inventory, APIServiceError>) in
+            switch result {
+                
+            case .success(let inventoryItems):
+                if inventoryItems.products.count == 0 {
+                    self.isDonePaginating = true
+                }
+                
+                self.inventoryProducts += inventoryItems.products
+                
+                if (self.inventoryProducts.count > 30) {
+                    self.productPageNumber += 1
+                }
+                
+                DispatchQueue.main.async {
+                    self.inventoryCollectionView.reloadData()
+                }
+                self.isPaginating = false
+                
+            case.failure(let err):
+                print("Failed to fetch products", err)
+            }
+        }
+    }
+    
+    fileprivate func fetchData() {
+        serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15)
+        { (result: Result<Inventory, APIServiceError>) in
+            
+            switch result {
+                
+            case .success(let inventoryItems):
+                //TODO: Move this to network class!
+                if inventoryItems.statusCode != 200 {
+                    DispatchQueue.main.async {
+                        
+                        self.inventoryCollectionView.backgroundView = self.errorImageView
+                    }
+                }
+                
+                self.inventoryResults = inventoryItems
+                self.inventoryProducts = inventoryItems.products
+                
+                DispatchQueue.main.async {
+                    
+                    self.inventoryCollectionView.reloadData()
+                }
+                
+            case.failure(let err):
+                print(err.localizedDescription)
+                
+                DispatchQueue.main.async {
+                    
+                    self.inventoryCollectionView.backgroundView = self.errorImageView
+                }
+            }
+        }
     }
 }
