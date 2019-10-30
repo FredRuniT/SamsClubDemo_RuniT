@@ -126,13 +126,6 @@ class ProductListViewController: ProductListView, UICollectionViewDataSource, UI
             switch result {
                 
             case .success(let inventoryItems):
-                //TODO: Move this to network class!
-                if inventoryItems.statusCode != 200 {
-                    DispatchQueue.main.async {
-                        
-                        self.inventoryCollectionView.backgroundView = self.errorImageView
-                    }
-                }
                 
                 self.inventoryResults = inventoryItems
                 self.inventoryProducts = inventoryItems.products
@@ -146,7 +139,6 @@ class ProductListViewController: ProductListView, UICollectionViewDataSource, UI
                 print(err.localizedDescription)
                 
                 DispatchQueue.main.async {
-                    
                     self.inventoryCollectionView.backgroundView = self.errorImageView
                 }
             }
