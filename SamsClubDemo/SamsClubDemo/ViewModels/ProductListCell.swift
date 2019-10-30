@@ -32,7 +32,7 @@ class ProductListCell: UICollectionViewCell {
             return
         }
         
-        let baseUrl = ServiceManager.shared.getbaseUrlString(imagId: product.productImage)
+        let baseUrl = ServiceManager.shared.getBaseImageUrl(imagId: product.productImage)
         let imageUrl = URL(string: baseUrl + product.productImage)
         
         self.productImageView.sd_setImage(with: imageUrl, completed: nil)
