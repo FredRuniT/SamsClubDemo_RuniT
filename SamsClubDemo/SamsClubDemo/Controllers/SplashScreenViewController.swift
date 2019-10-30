@@ -34,6 +34,7 @@ class SplashScreenViewController: UIViewController {
             self.fadeInLogoImage.alpha = 1
             self.view.fadeOut()
             self.productListVC.navigationController?.isNavigationBarHidden = false
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

@@ -52,6 +52,7 @@ class ServiceManager {
             DispatchQueue.main.async {
                 
                 let productListView = ProductListView()
+                productListView.errorImageView.isHidden = false
                 productListView.inventoryCollectionView.backgroundView = productListView.errorImageView
             }
         }
