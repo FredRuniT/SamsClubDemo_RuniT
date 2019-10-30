@@ -10,9 +10,6 @@ import UIKit
 import SDWebImage
 import Cosmos
 
-fileprivate let productListCellId = "productListCellId"
-fileprivate let footerID = "loadingfooterID"
-
 class MainViewController: ProductListView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     fileprivate var serviceManager = ServiceManager()
@@ -22,23 +19,13 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
-    private var layoutOption: LayoutOption = .list {
-        didSet {
-            setupLayout(with: view.bounds.size)
-        }
-    }
     
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.fetchData()
-        
-        //MARK - Register Loading Footer
-        self.inventoryCollectionView.register(ProductLoadindFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
-        setupLayout(with: view.bounds.size)
-        
-        self.layoutOption = .list
     }
     
     private func fetchData() {
@@ -58,14 +45,14 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
                 self.inventoryProducts = inventoryItems.products
                 
                 DispatchQueue.main.async {
-                self.inventoryCollectionView.reloadData()
+                    self.inventoryCollectionView.reloadData()
                 }
                 
             case.failure(let err):
                 print(err.localizedDescription)
                 DispatchQueue.main.async {
                     self.inventoryCollectionView.backgroundView = self.errorImageView
-    
+                    
                 }
             }
         }
@@ -78,34 +65,6 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setupLayout(with: view.bounds.size)
-    }
-    
-    
-    private func setupLayout(with containerSize: CGSize) {
-        guard let flowLayout = self.inventoryCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
-        }
-        
-        switch layoutOption {
-        case .list:
-            flowLayout.minimumInteritemSpacing = 10
-            flowLayout.minimumLineSpacing = 10
-            flowLayout.sectionInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 8.0, right: 0)
-            
-            if traitCollection.horizontalSizeClass == .regular {
-                let minItemWidth: CGFloat = 300
-                let numberOfCell = containerSize.width / minItemWidth
-                let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
-                flowLayout.itemSize = CGSize(width: width, height: 130)
-            } else {
-                flowLayout.itemSize = CGSize(width: containerSize.width, height: 120)
-            }
-            
-        }
-        
-        DispatchQueue.main.async {
-            self.inventoryCollectionView.reloadData()
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
