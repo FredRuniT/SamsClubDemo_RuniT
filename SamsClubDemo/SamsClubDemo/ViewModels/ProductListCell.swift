@@ -46,7 +46,7 @@ class ProductListCell: UICollectionViewCell {
         self.productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         
         self.productPriceLabel.font = .preferredFont(forTextStyle: .callout)
-        self.productNameLabel.font = .preferredFont(forTextStyle: .subheadline)
+        self.productNameLabel.font = .preferredFont(forTextStyle: .callout)
         self.productInstockLabel.font = .preferredFont(forTextStyle: .footnote)
     }
 }

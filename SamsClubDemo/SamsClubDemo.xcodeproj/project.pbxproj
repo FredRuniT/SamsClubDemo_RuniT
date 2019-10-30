@@ -200,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				F6D3C9382369409C00049F7C /* ProductDetailsDataModel.swift */,
+				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				F6727F73235EA9E0005B4A2C /* Main.storyboard */,
-				F6727FAB235EC2CA005B4A2C /* ProductListCell.swift */,
 				F61C8491236214AB0034139F /* ProductLoadingFoooter.swift */,
 				F61C849923632CEA0034139F /* ProductListView.swift */,
 			);
