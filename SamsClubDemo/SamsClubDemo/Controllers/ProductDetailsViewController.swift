@@ -13,7 +13,6 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productBrandLabel: UILabel!
     @IBOutlet weak var productShortDescription: UILabel!
     @IBOutlet weak var productLongDescriptionLabel: UILabel!
-    @IBOutlet weak var showFullDescriptonButton: UIButton!
     @IBOutlet weak var reviewRatings: CosmosView!
     
     override func viewDidLoad() {
@@ -57,6 +56,8 @@ class ProductDetailsViewController: UIViewController {
         productInstockLabel.font = .preferredFont(forTextStyle: .callout)
         productNameLabel.font = .preferredFont(forTextStyle: .headline)
         productLongDescriptionLabel.font = .preferredFont(forTextStyle: .body)
+        productLongDescriptionLabel.layer.cornerRadius = 10
+        productLongDescriptionLabel.clipsToBounds = true
 
     }
     
@@ -66,19 +67,5 @@ class ProductDetailsViewController: UIViewController {
         reviewRatings.rating = Double(product?.reviewRating ?? 0.0)
         reviewRatings.text = "\(product?.reviewCount ?? 0)"
         reviewRatings.settings.textFont = .preferredFont(forTextStyle: .callout)
-    }
-    
-    @IBAction func showFullDecription ( _sender: UIButton) {
-        UIView.animate(withDuration: 0.3) {
-            self.productLongDescriptionLabel.isHidden.toggle()
-            if self.productLongDescriptionLabel.isHidden {
-                self.showFullDescriptonButton.setTitle("Show Full Product Description", for: .normal)
-                self.productLongDescriptionLabel.alpha = 0
-                self.productShortDescription.alpha = 1
-            } else {
-                self.showFullDescriptonButton.setTitle("Hide Product Description", for: .normal)
-                self.productLongDescriptionLabel.alpha = 1
-            }
-        }
     }
 }

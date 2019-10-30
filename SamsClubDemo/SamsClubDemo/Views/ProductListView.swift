@@ -43,7 +43,7 @@ class ProductListView: UIViewController {
         super.viewDidLoad()
         self.title = "Products"
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let spashScreenVC = storyBoard.instantiateViewController(withIdentifier: "SlashViewController") as! SlashViewController
+        let spashScreenVC = storyBoard.instantiateViewController(withIdentifier: "SplashScreenViewController") as! SplashScreenViewController
         self.navigationController?.view.addSubview(spashScreenVC.view)
         
         self.inventoryCollectionView.backgroundColor = .systemBackground
