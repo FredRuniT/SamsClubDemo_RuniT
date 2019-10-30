@@ -17,7 +17,6 @@ class ServiceManager {
     
     func fetchInventoryData<T: Decodable>(pageNumber: Int, pageItems: Int, completion: @escaping (Result<T, APIServiceError>) -> ()) {
         guard let apiUrl = URL(string: "\(BASE_URL)/\(pageNumber)/\(pageItems)") else {return}
-        print(apiUrl)
         
         URLSession.shared.dataTask(with: apiUrl) { (result) in
             switch result {
@@ -49,6 +48,7 @@ class ServiceManager {
     func statusCodeChecker(responseStatus: Int) {
         
         if responseStatus != 200  {
+            
             DispatchQueue.main.async {
                 
                 let productListView = ProductListView()
