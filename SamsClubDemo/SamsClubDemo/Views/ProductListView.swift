@@ -12,31 +12,9 @@ import UIKit
 class ProductListView: UIViewController {
     
     @IBOutlet weak var inventoryCollectionView: UICollectionView!
+    @IBOutlet weak var errorImageView: UIImageView!
+    
     var productListFooter = ProductLoadindFooter()
-    lazy var clintErorrImageVIew: UIImageView = {
-        let errorImageView = UIImageView()
-        errorImageView.fillSuperview()
-        errorImageView.contentMode = .scaleAspectFit
-        errorImageView.clipsToBounds = true
-        return errorImageView
-    }()
-    
-    lazy var serverErorrImageVIew: UIImageView = {
-        let errorImageView = UIImageView()
-        errorImageView.fillSuperview()
-        errorImageView.contentMode = .scaleAspectFit
-        //errorImageView.clipsToBounds = true
-        return errorImageView
-    }()
-    
-    lazy var poorConnectionImageView: UIImageView = {
-           let poorConnectionImageView = UIImageView()
-           poorConnectionImageView.fillSuperview()
-           poorConnectionImageView.contentMode = .scaleAspectFit
-    
-           poorConnectionImageView.clipsToBounds = true
-           return poorConnectionImageView
-       }()
     
     override func viewDidLoad() {
         
@@ -47,11 +25,9 @@ class ProductListView: UIViewController {
         self.navigationController?.view.addSubview(spashScreenVC.view)
         
         self.inventoryCollectionView.backgroundColor = .systemBackground
-
+        
         //TODO: Provide Use cases
-        self.clintErorrImageVIew.image = UIImage(named: "errorImage.jpg")
-        self.serverErorrImageVIew.image = UIImage(named: "itsnotYouItsMe")
-        self.poorConnectionImageView.image = UIImage(named: "no_internet.jpg")
+        self.errorImageView.image = UIImage(named: "itsnotYouItsMe")
     }
     
     override func viewWillAppear(_ animated: Bool) {
