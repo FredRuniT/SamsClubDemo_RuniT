@@ -19,7 +19,6 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
-    
 
     override func viewDidLoad() {
         
@@ -38,21 +37,25 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
                 //TODO: Move this to network class!
                 if inventoryItems.statusCode != 200 {
                     DispatchQueue.main.async {
+                        
                         self.inventoryCollectionView.backgroundView = self.errorImageView
                     }
-                } 
+                }
+                
                 self.inventoryResults = inventoryItems
                 self.inventoryProducts = inventoryItems.products
                 
                 DispatchQueue.main.async {
+                    
                     self.inventoryCollectionView.reloadData()
                 }
                 
             case.failure(let err):
                 print(err.localizedDescription)
+                
                 DispatchQueue.main.async {
-                    self.inventoryCollectionView.backgroundView = self.errorImageView
                     
+                    self.inventoryCollectionView.backgroundView = self.errorImageView
                 }
             }
         }
@@ -98,9 +101,8 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
         cell.backgroundColor = .secondarySystemBackground
         cell.layer.cornerRadius = 5
         
-        
         //MARK: - Pagination Implementation
-        if indexPath.item == (inventoryProducts.count) - 1 && !isPaginating {
+        if indexPath.item == (inventoryProducts.count) - 5 && !isPaginating {
             isPaginating = true
             serviceManager.fetchInventoryData(pageNumber:  self.productPageNumber, pageItems: 15) { (result: Result<Inventory, APIServiceError>) in
                 switch result {
@@ -109,8 +111,7 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
                     if inventoryItems.products.count == 0 {
                         self.isDonePaginating = true
                     }
-                    
-                    sleep(2)
+  
                     self.inventoryProducts += inventoryItems.products
                     
                     if (self.inventoryProducts.count > 30) {
