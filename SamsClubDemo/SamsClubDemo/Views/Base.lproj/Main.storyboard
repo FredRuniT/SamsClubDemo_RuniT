@@ -187,35 +187,7 @@
                     <view key="view" contentMode="scaleToFill" id="YgB-LN-LbC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uz8-VJ-R0E">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WU2-NA-jbD">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="WU2-NA-jbD" secondAttribute="bottom" id="8Ug-5B-hVs"/>
-                                    <constraint firstItem="WU2-NA-jbD" firstAttribute="width" secondItem="Uz8-VJ-R0E" secondAttribute="width" id="CTK-Dm-dA3"/>
-                                    <constraint firstAttribute="trailing" secondItem="WU2-NA-jbD" secondAttribute="trailing" id="Czw-KY-Kn8"/>
-                                    <constraint firstItem="WU2-NA-jbD" firstAttribute="top" secondItem="Uz8-VJ-R0E" secondAttribute="top" id="Zwv-Zm-cFm"/>
-                                    <constraint firstItem="WU2-NA-jbD" firstAttribute="leading" secondItem="Uz8-VJ-R0E" secondAttribute="leading" id="fjz-1U-BRN"/>
-                                    <constraint firstItem="WU2-NA-jbD" firstAttribute="height" secondItem="Uz8-VJ-R0E" secondAttribute="height" id="mu7-5k-EjB"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="qFj-TJ-oIS"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="L4I-4x-uh3"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Uz8-VJ-R0E" firstAttribute="leading" secondItem="Cbp-S6-iaI" secondAttribute="leading" id="D46-LU-tqv"/>
-                            <constraint firstItem="Uz8-VJ-R0E" firstAttribute="trailing" secondItem="Cbp-S6-iaI" secondAttribute="trailing" id="b2j-QB-RlK"/>
-                            <constraint firstItem="Uz8-VJ-R0E" firstAttribute="bottom" secondItem="Cbp-S6-iaI" secondAttribute="bottom" id="drK-q0-jU0"/>
-                            <constraint firstItem="Uz8-VJ-R0E" firstAttribute="centerX" secondItem="YgB-LN-LbC" secondAttribute="centerX" id="g2J-N8-OTY"/>
-                            <constraint firstItem="Uz8-VJ-R0E" firstAttribute="top" secondItem="Cbp-S6-iaI" secondAttribute="top" id="xHi-CM-kg9"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Cbp-S6-iaI"/>
                     </view>
                 </viewController>
@@ -239,10 +211,10 @@
             </objects>
             <point key="canvasLocation" x="-625" y="-1169"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Product List View Controller-->
         <scene sceneID="gdb-Qt-oSv">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="h2z-kz-Oii" customClass="MainViewController" customModule="SamsClubDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductListViewController" id="h2z-kz-Oii" customClass="ProductListViewController" customModule="SamsClubDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="igM-89-hKE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

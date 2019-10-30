@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ProductDetailsContentViewController: UIViewController {
+class ProductDetailsContentViewController: ProductDetailsDataModel {
     
     @IBOutlet weak var contentView: UIView!
     
     let dataSource = ["V1", "V2", "V3","V4"]
+    var productListViewController = ProductListViewController()
     var customPageViewController: CustomPageViewController!
     var currentViewControllerIndex = 0
     

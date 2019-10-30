@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import Cosmos
 
-class MainViewController: ProductListView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ProductListViewController: ProductListView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     fileprivate var serviceManager = ServiceManager()
     fileprivate var inventoryResults: Inventory?
@@ -61,7 +61,8 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: productListCellId, for: indexPath) as! ProductListCell
         
-        let productResult = inventoryProducts[indexPath.row]
+        let productResult = inventoryProducts[indexPath.item]
+        
         
         cell.configure(withProductResult: productResult)
         cell.cosmosView.rating = Double(productResult.reviewRating ?? 0.0)
@@ -79,6 +80,7 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productInventory = inventoryProducts[indexPath.item]
+        print(indexPath.item)
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
