@@ -209,20 +209,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWY-DM-aQa" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-1169"/>
+            <point key="canvasLocation" x="748" y="-1835"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Custom Page View Controller-->
         <scene sceneID="8CK-CE-LFh">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="nTF-uL-9JD" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="CustomPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="nTF-uL-9JD" customClass="CustomPageViewController" customModule="SamsClubDemo" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oV-zP-fJR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1475" y="-1169"/>
         </scene>
-        <!--View Controller-->
+        <!--Product Details Data Model-->
         <scene sceneID="482-cK-8ei">
             <objects>
-                <viewController id="BVV-qp-RP1" sceneMemberID="viewController">
+                <viewController id="BVV-qp-RP1" customClass="ProductDetailsDataModel" customModule="SamsClubDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YgB-LN-LbC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,6 +402,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oev-QN-Xkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="86.956521739130437" y="-1169.8369565217392"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gUk-YO-sUO">
+            <objects>
+                <viewController id="Q3k-iR-Vkd" customClass="DPVCViewController" customModule="SamsClubDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wqe-7K-Rhg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLF-O1-qA9">
+                                <rect key="frame" x="87" y="255" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pLF-O1-qA9" firstAttribute="top" secondItem="0SD-Lb-Gzi" secondAttribute="top" constant="255" id="Qq6-5r-61f"/>
+                            <constraint firstItem="0SD-Lb-Gzi" firstAttribute="bottom" secondItem="pLF-O1-qA9" secondAttribute="bottom" constant="353" id="ctn-DQ-G8F"/>
+                            <constraint firstItem="pLF-O1-qA9" firstAttribute="centerX" secondItem="wqe-7K-Rhg" secondAttribute="centerX" id="vDu-8H-gbl"/>
+                            <constraint firstItem="pLF-O1-qA9" firstAttribute="leading" secondItem="0SD-Lb-Gzi" secondAttribute="leading" constant="87" id="xaq-Ew-D0P"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0SD-Lb-Gzi"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="pLF-O1-qA9" id="CT8-om-Ofm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNX-Tl-Kpi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="777" y="-1168"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="bT7-j2-yTz">

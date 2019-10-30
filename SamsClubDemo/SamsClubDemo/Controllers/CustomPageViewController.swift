@@ -1,5 +1,5 @@
 //
-//  DetailsDataViewController.swift
+//  ProductDetialPageViewController.swift
 //  SamsClubDemo
 //
 //  Created by Fredrick Burns on 10/29/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsDataViewController: UIViewController {
+class CustomPageViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

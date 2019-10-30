@@ -27,6 +27,9 @@
 		F6727FE9235FFE64005B4A2C /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FE6235FFE64005B4A2C /* CustomFonts.swift */; };
 		F6727FEA235FFE64005B4A2C /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FE7235FFE64005B4A2C /* UIView+Layout.swift */; };
 		F6727FEB235FFE64005B4A2C /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6727FE8235FFE64005B4A2C /* VerticalStackView.swift */; };
+		F6D3C93723693FE200049F7C /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3C93623693FE200049F7C /* CustomPageViewController.swift */; };
+		F6D3C9392369409C00049F7C /* ProductDetailsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3C9382369409C00049F7C /* ProductDetailsDataModel.swift */; };
+		F6D3C93B2369424800049F7C /* ProductDetailsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3C93A2369424800049F7C /* ProductDetailsContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		F6727FE6235FFE64005B4A2C /* CustomFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		F6727FE7235FFE64005B4A2C /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		F6727FE8235FFE64005B4A2C /* VerticalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		F6D3C93623693FE200049F7C /* CustomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
+		F6D3C9382369409C00049F7C /* ProductDetailsDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailsDataModel.swift; path = SamsClubDemo/Controllers/ProductDetailsDataModel.swift; sourceTree = SOURCE_ROOT; };
+		F6D3C93A2369424800049F7C /* ProductDetailsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,8 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				F6727FA5235EBABE005B4A2C /* MainViewController.swift */,
+				F6D3C93623693FE200049F7C /* CustomPageViewController.swift */,
 				F607DB5923617DAA00271CB8 /* ProductDetailsViewController.swift */,
 				F644BA6C236553F200592922 /* SplashScreenViewController.swift */,
+				F6D3C93A2369424800049F7C /* ProductDetailsContentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +199,7 @@
 		F6727FA0235EAE3B005B4A2C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F6D3C9382369409C00049F7C /* ProductDetailsDataModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -428,8 +437,11 @@
 				F6727FE4235FFE40005B4A2C /* ServiceManager.swift in Sources */,
 				F6727FEA235FFE64005B4A2C /* UIView+Layout.swift in Sources */,
 				F6727FDE235FFDDA005B4A2C /* Products.swift in Sources */,
+				F6D3C9392369409C00049F7C /* ProductDetailsDataModel.swift in Sources */,
 				F6727FE9235FFE64005B4A2C /* CustomFonts.swift in Sources */,
+				F6D3C93B2369424800049F7C /* ProductDetailsContentViewController.swift in Sources */,
 				F6727FAC235EC2CA005B4A2C /* ProductListCell.swift in Sources */,
+				F6D3C93723693FE200049F7C /* CustomPageViewController.swift in Sources */,
 				F607DB562360BE7D00271CB8 /* Extensions.swift in Sources */,
 				F61C849A23632CEA0034139F /* ProductListView.swift in Sources */,
 				F607DB5A23617DAA00271CB8 /* ProductDetailsViewController.swift in Sources */,
