@@ -38,8 +38,8 @@ class ProductListView: UIViewController {
         self.inventoryCollectionView.backgroundColor = .systemBackground
         
         //TODO: Provide Use cases
+        self.errorImageView.isHidden = true
         self.errorImageView.image = UIImage(named: "itsnotYouItsMe")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

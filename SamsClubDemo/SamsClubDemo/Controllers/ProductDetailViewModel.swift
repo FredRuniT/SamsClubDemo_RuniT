@@ -32,7 +32,8 @@ class ProductDetailViewModel: ProductDetailsView {
         }
         setUpReviewUi()
         
-        let baseUrl = "https://mobile-tha-server.firebaseapp.com/"
+     
+        let baseUrl = ServiceManager.shared.getBaseImageUrl(imagId: product.productImage)
         let imageUrl = URL(string: baseUrl + product.productImage)
         productImageView.sd_setImage(with: imageUrl, completed: nil)
         productImageView.layer.cornerRadius = 10
@@ -52,7 +53,7 @@ class ProductDetailViewModel: ProductDetailsView {
         productLongDescriptionLabel.backgroundColor = .secondarySystemBackground
         
         productShortDescription.font = .preferredFont(forTextStyle: .body)
-        productPriceLabel.font = .preferredFont(forTextStyle: .headline)
+        productPriceLabel.font = .preferredFont(forTextStyle: .title1)
         productInstockLabel.font = .preferredFont(forTextStyle: .callout)
         productNameLabel.font = .preferredFont(forTextStyle: .headline)
         productLongDescriptionLabel.font = .preferredFont(forTextStyle: .body)
