@@ -1,5 +1,5 @@
 //
-//  ProductDetailsDataModel.swift
+//  ProductDetailViewModel.swift
 //  SamsClubDemo
 //
 //  Created by Fredrick Burns on 10/29/19.
@@ -10,21 +10,10 @@ import UIKit
 import SDWebImage
 import Cosmos
 
-class ProductDetailsDataModel: UIViewController {
+class ProductDetailViewModel: ProductDetailsView {
     
     var product: Products?
     var pageIndex: Int?
-    
-    @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var productPriceLabel: UILabel!
-    @IBOutlet weak var productInstockLabel: UILabel!
-    @IBOutlet weak var productBrandLabel: UILabel!
-    @IBOutlet weak var productShortDescription: UILabel!
-    @IBOutlet weak var productLongDescriptionLabel: UILabel!
-    @IBOutlet weak var contentScrollView: UIScrollView!
-    @IBOutlet weak var reviewRatings: CosmosView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

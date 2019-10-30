@@ -80,7 +80,6 @@ class ProductListViewController: ProductListView, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productInventory = inventoryProducts[indexPath.item]
-        print(indexPath.item)
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController

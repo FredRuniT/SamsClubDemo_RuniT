@@ -40,7 +40,6 @@ class ProductListView: UIViewController {
         //TODO: Provide Use cases
         self.errorImageView.image = UIImage(named: "itsnotYouItsMe")
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
