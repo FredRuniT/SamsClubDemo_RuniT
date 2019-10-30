@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HdK-ZC-nVn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2i2-fs-D3C">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -83,7 +83,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="Orh-L3-Qe0">
-                                <rect key="frame" x="20" y="20" width="374" height="47.666666666666657"/>
+                                <rect key="frame" x="20" y="19.999999999999996" width="374" height="47.666666666666657"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-ex-Axz">
                                         <rect key="frame" x="0.0" y="0.0" width="217" height="47.666666666666664"/>
@@ -211,144 +211,28 @@
             </objects>
             <point key="canvasLocation" x="809" y="-1169"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="add-tE-qJC">
+        <!--Page View Controller-->
+        <scene sceneID="8CK-CE-LFh">
             <objects>
-                <viewController id="HdK-ZC-nVn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4l3-cN-DBn">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="nTF-uL-9JD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6oV-zP-fJR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1475" y="-1169"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="482-cK-8ei">
+            <objects>
+                <viewController id="BVV-qp-RP1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YgB-LN-LbC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1s-oK-bu2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyM-L0-0Us">
-                                        <rect key="frame" x="0.0" y="71" width="414" height="128"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4eZ-am-Nah">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <mutableString key="text">I love building tools with software, and that is why I am currently the Lead Developer for Green 13 Solutions.
-
-Recently I have been having lots of fun using Swift and the Interface Builder in Xcode to create iOS apps.
-
-I ran into some challenges when I was trying to create a scene where users can scroll to see content that overflows in the current content view. The content wasn’t scrolling properly and the text wasn’t automatically being shown properly for different screen sizes.
-
-Here are some notes for my future self to refer to. I hope you find them useful as well!
-
-Here is a repository for the project if you want to see the completed example.
-
-What we will build
-Our app will have a single page. The page will contain some text and users can scroll down to see the text that overflows from their current content view.
-
-We will use the Interface Builder in Xcode to add a UIScrollView object, a nested UIView object and then a further nested UITextView object. We will use the Interface Builder to add constraints to these elements. The constraints will mean that Auto Layout can enable scrolling to happen properly and the Text View will automatically appear properly on different screen sizes.
-
-A swift bit of background info (pun intended)
-The UIScrollView object can be used as a parent object to other UIKit items such as UIView and UITextView.
-
-Doing this means that all child objects can collectively have their origin shifted relative to the content view that is shown to the user. This means ‘scrolling’ behaviour works as users expect. Another benefit is that Auto Layout will properly size our elements on different screens as expected.
-
-We use the terms ‘UIScrollView’ and ‘Scroll View’ interchangeably below, and similarly for View and Text View.
-
-Below are the steps to follow.
-
-Adding View
-Create new project and selecting ‘Single View App’. If you click on Main.storyboard and you will see we have a scene with a blank View element.
-
-Adding Scroll View
-Drag a Scroll View UI element from the Object Library into the scene. Then add the constraints shown in the picture below to anchor the Scroll View element to the edges of its parent Safe Area.
-
-
-Add a View element
-Use the Object Library to drag a View element into the scene. The View will be the parent container for our Text View element.
-
-Manually resize the View element with your cursor so that it fills the width of the screen.
-
-
-Manually resized View element to fit into width
-Anchor View to Scroll View
-Click on the View element in the object hierarchy and drag+release your cursor onto the Scroll View element above it in the hierarchy. Click on the 4 topmost options to apply these constraints. Click on the ‘Equal Widths’ to apply this constraint also.
-
-Why? Constraining the View this way means that a child Text View element we add works properly with Auto Layout. This happens because we constrain the Text View to the bottom of the View (which we anchored properly to the bottom of the Scroll View!) instead of directly to the bottom of the Scroll View.
-
-You will see that the layout guides in the Interface Builder are red because there is some other error. We will fix this shortly.
-
-
-Add these constraints to the View element
-Add Text View as child to View
-Add a Text View element inside the View element in the scene.
-
-Add constraints to the Text View
-Add the constraints in the picture below to the Text View.
-
-Why? This will constrain the Text View relative to the View object that is surrounding it.
-
-
-Adding constraints to Text View
-Disable scroll behaviour in Text View
-You should have a similar screen to the one below. You can see that there is still a lot of red in the Interface Builder.
-
-You can remove these warnings by selecting the Text View element and deselecting the ‘Scrolling Enabled’ in the editor pane on the right hand side.
-
-
-Deselect ‘Scrolling Enabled’ on the right to remove these red errors
-Note that we will still have scroll behaviour with this approach but it will be the parent Scroll View that is actually being moved, not the individual Text View element. Its the same as how a leaf only moves on a river because the river that surrounds it is moving!
-
-This is slightly subtle but quite important to understand as it underpins the whole solution.
-
-
-Our approach means a Text View only scrolls because a Scroll View moves it — same as how a leaf only moves because the surrounding river moves it
-Finally
-Add some more content to the Text View. You should see that scrolling works as expected and that the Text View appears properly on different screen sizes.
-
-This is the beauty of Auto Layout!
-
-
-Screenshot of scrolled Text View using Xcode Simulator
-Here is a repository for the project if you want to see the completed example.
-
-All information about robins for the Text View content is directly from Wikipedia. Thanks to the community for this.
-
-Why robins? Because I love birds and robins are particula</mutableString>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="4eZ-am-Nah" firstAttribute="leading" secondItem="uyM-L0-0Us" secondAttribute="leading" id="1CF-9T-7v2"/>
-                                            <constraint firstAttribute="bottom" secondItem="4eZ-am-Nah" secondAttribute="bottom" id="AhR-ZM-VkA"/>
-                                            <constraint firstAttribute="trailing" secondItem="4eZ-am-Nah" secondAttribute="trailing" id="OK4-la-3FL"/>
-                                            <constraint firstAttribute="height" constant="128" id="UUD-Tl-FOO"/>
-                                            <constraint firstItem="4eZ-am-Nah" firstAttribute="top" secondItem="uyM-L0-0Us" secondAttribute="top" id="ZYE-jI-bh3"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="uyM-L0-0Us" firstAttribute="leading" secondItem="r1s-oK-bu2" secondAttribute="leading" id="54C-Hb-7zr"/>
-                                    <constraint firstAttribute="bottom" secondItem="uyM-L0-0Us" secondAttribute="bottom" constant="537" id="YE2-wM-Xr5"/>
-                                    <constraint firstItem="uyM-L0-0Us" firstAttribute="top" secondItem="r1s-oK-bu2" secondAttribute="top" constant="71" id="j7R-MB-pBO"/>
-                                    <constraint firstAttribute="trailing" secondItem="uyM-L0-0Us" secondAttribute="trailing" id="ocX-Vx-1Kv"/>
-                                    <constraint firstItem="uyM-L0-0Us" firstAttribute="width" secondItem="r1s-oK-bu2" secondAttribute="width" id="vyt-xH-gUe"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="Fwp-gR-12s"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="5sC-Pv-cKf"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="r1s-oK-bu2" firstAttribute="leading" secondItem="5zg-oa-SgD" secondAttribute="leading" id="0bE-Py-mk2"/>
-                            <constraint firstItem="r1s-oK-bu2" firstAttribute="trailing" secondItem="5zg-oa-SgD" secondAttribute="trailing" id="2QI-og-lwp"/>
-                            <constraint firstItem="r1s-oK-bu2" firstAttribute="bottom" secondItem="5zg-oa-SgD" secondAttribute="bottom" id="7QV-Ra-YsI"/>
-                            <constraint firstItem="r1s-oK-bu2" firstAttribute="top" secondItem="5zg-oa-SgD" secondAttribute="top" id="y2q-39-w6K"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5zg-oa-SgD"/>
+                        <viewLayoutGuide key="safeArea" id="Cbp-S6-iaI"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vyV-Cl-6VS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ThM-sm-ofe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508.6956521739132" y="-1169.8369565217392"/>
+            <point key="canvasLocation" x="2132" y="-1169"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7VL-qB-zCu">
@@ -374,6 +258,10 @@ Why robins? Because I love birds and robins are particula</mutableString>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nZa-iR-hA5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LNM-QK-mgZ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -497,18 +385,23 @@ Why robins? Because I love birds and robins are particula</mutableString>
                             <constraint firstItem="LNM-QK-mgZ" firstAttribute="trailing" secondItem="ucx-9F-xrE" secondAttribute="trailing" id="2t4-KF-xfl"/>
                             <constraint firstItem="LNM-QK-mgZ" firstAttribute="leading" secondItem="ucx-9F-xrE" secondAttribute="leading" id="9w7-bR-K98"/>
                             <constraint firstItem="ucx-9F-xrE" firstAttribute="bottom" secondItem="LNM-QK-mgZ" secondAttribute="bottom" id="JCd-AT-RIg"/>
+                            <constraint firstItem="nZa-iR-hA5" firstAttribute="bottom" secondItem="ucx-9F-xrE" secondAttribute="bottom" id="PP6-nT-d35"/>
+                            <constraint firstItem="nZa-iR-hA5" firstAttribute="leading" secondItem="igM-89-hKE" secondAttribute="leading" id="Trv-PD-OEL"/>
+                            <constraint firstAttribute="trailing" secondItem="nZa-iR-hA5" secondAttribute="trailing" id="W3k-ZX-aaz"/>
+                            <constraint firstItem="nZa-iR-hA5" firstAttribute="top" secondItem="igM-89-hKE" secondAttribute="top" id="YlV-MH-k4O"/>
                             <constraint firstItem="LNM-QK-mgZ" firstAttribute="top" secondItem="ucx-9F-xrE" secondAttribute="top" id="eto-wE-ZTh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ucx-9F-xrE"/>
                     </view>
                     <navigationItem key="navigationItem" id="E8R-IY-V3z"/>
                     <connections>
+                        <outlet property="errorImageView" destination="nZa-iR-hA5" id="ThO-KY-FY3"/>
                         <outlet property="inventoryCollectionView" destination="LNM-QK-mgZ" id="Xhj-zW-tPK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oev-QN-Xkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86.956521739130437" y="-1169.1964285714284"/>
+            <point key="canvasLocation" x="86.956521739130437" y="-1169.8369565217392"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="bT7-j2-yTz">

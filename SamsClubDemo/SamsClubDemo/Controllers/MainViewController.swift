@@ -18,7 +18,7 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
     fileprivate var serviceManager = ServiceManager()
     fileprivate var inventoryResults: Inventory?
     fileprivate var inventoryProducts = [Products]()
-    fileprivate var productListViewModel = ProductListView()
+    fileprivate var productListView = ProductListView()
     fileprivate var isPaginating = false
     fileprivate var isDonePaginating = false
     var productPageNumber = 1
@@ -51,20 +51,20 @@ class MainViewController: ProductListView, UICollectionViewDataSource, UICollect
                 //TODO: Move this to network class!
                 if inventoryItems.statusCode != 200 {
                     DispatchQueue.main.async {
-                        self.inventoryCollectionView.backgroundView = self.productListViewModel.clintErorrImageVIew
+                        self.inventoryCollectionView.backgroundView = self.errorImageView
                     }
                 } 
                 self.inventoryResults = inventoryItems
                 self.inventoryProducts = inventoryItems.products
                 
                 DispatchQueue.main.async {
-                    self.inventoryCollectionView.reloadData()
+                self.inventoryCollectionView.reloadData()
                 }
                 
             case.failure(let err):
                 print(err.localizedDescription)
                 DispatchQueue.main.async {
-                    self.inventoryCollectionView.backgroundView = self.productListViewModel.poorConnectionImageView
+                    self.inventoryCollectionView.backgroundView = self.errorImageView
     
                 }
             }
