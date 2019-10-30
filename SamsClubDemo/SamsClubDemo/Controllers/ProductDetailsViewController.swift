@@ -44,7 +44,7 @@ class ProductDetailsViewController: UIViewController {
         productLongDescriptionLabel.attributedText = product.longDescription?.htmlToAttributedString
         productShortDescription.attributedText = product.shortDescription?.htmlToAttributedString
         productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
-        productPriceLabel.text = product.price
+        productPriceLabel.text = "Price: \(product.price ?? "")"
 
         productShortDescription.textColor = .label
         productLongDescriptionLabel.textColor = .label
