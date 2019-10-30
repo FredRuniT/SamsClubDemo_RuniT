@@ -32,7 +32,7 @@ class ProductListCell: UICollectionViewCell {
             return
         }
         
-        let baseUrl = ServiceManager.shared.getbaseUrlString(imagId: product.productImage)
+        let baseUrl = ServiceManager.shared.getBaseImageUrl(imagId: product.productImage)
         let imageUrl = URL(string: baseUrl + product.productImage)
         
         self.productImageView.sd_setImage(with: imageUrl, completed: nil)
@@ -46,7 +46,7 @@ class ProductListCell: UICollectionViewCell {
         self.productInstockLabel.text = product.inStock ?? false ? "In Stock" :"Out of Stock"
         
         self.productPriceLabel.font = .preferredFont(forTextStyle: .callout)
-        self.productNameLabel.font = .preferredFont(forTextStyle: .subheadline)
+        self.productNameLabel.font = .preferredFont(forTextStyle: .callout)
         self.productInstockLabel.font = .preferredFont(forTextStyle: .footnote)
     }
 }

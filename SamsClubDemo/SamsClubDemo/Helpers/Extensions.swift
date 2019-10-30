@@ -13,10 +13,7 @@ extension UILabel {
         self.init(frame: .zero)
         self.text = text
         self.font = font
-       // self.numberOfLines = 2
         self.textColor = .label
-//        self.adjustsFontSizeToFitWidth = true
-//        self.adjustsFontForContentSizeCategory = true
     }
 }
 
